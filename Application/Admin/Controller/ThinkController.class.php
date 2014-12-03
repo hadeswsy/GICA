@@ -25,6 +25,7 @@ class ThinkController extends AdminController {
         $grids  = preg_split('/[;\r\n]+/s', trim($model['list_grid']));
         foreach ($grids as &$value) {
         	if(trim($value) === ''){
+        		
         		continue;
         	}
             // 字段:标题:链接

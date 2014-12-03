@@ -260,6 +260,8 @@ function tree_to_list($tree, $child = '_child', $order='id', &$list = array()){
  * 格式化字节大小
  * @param  number $size      字节数
  * @param  string $delimiter 数字和单位分隔符
+ * 
+ * 
  * @return string            格式化后的带单位的大小
  */
 function format_bytes($size, $delimiter = '') {
