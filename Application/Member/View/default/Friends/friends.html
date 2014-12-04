@@ -1,29 +1,13 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/include/taglib.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>融资谷网贷</title>
-		<jsp:include page="/include/head.jsp"></jsp:include>
-		<link rel="stylesheet" href="css/style.css" type="text/css"></link>
-		<link rel="stylesheet" href="css/base.css" type="text/css"></link>
-		<link href="css/inside.css" rel="stylesheet" type="text/css" />
-		<link id="skin" rel="stylesheet" href="css/jbox/Gray/jbox.css" />
-		<script language="javascript" type="text/javascript"
-			src="My97DatePicker/WdatePicker.js"></script>
-	</head>
-
-	<body>
-		<!-- 引用头部公共部分 -->
-		<jsp:include page="/include/topref.jsp"></jsp:include>
+<block name="body">
+<extend name="Base/common"/>
+<block name="body">
 
 		<div class="nymain">
 			<div class="wdzh">
 				<div class="l_nav">
 					<div class="box">
 						<!-- 引用我的帐号主页左边栏 -->
-						<%@include file="/include/left.jsp"%>
+					<include file="Public/left"/>
 					</div>
 				</div>
 				<div class="r_main">
@@ -31,21 +15,21 @@
 						<ul>
 							<a href="friendManagerInit.htm">
 								<li class="on">
-									如何邀请好友
+									邀请好友
 								</li> 
 							</a>
 							<a href="friendManagerInits.htm">
 							<li>
-								 邀请的好友 
+								好友列表
 							</li>
 							</a>
 						</ul>
 					</div>
 					<div class="box">
 						<div class="boxmain2 yqhy">
-							<div class="rrdslcj">
+							<!-- <div class="rrdslcj">
 								<img src="./images/yqhy.jpg" alt="邀请好友，挣金币，兑大礼" />
-							</div>
+							</div> -->
 							<div class="bdsharebuttonbox">
 								<a href="#" class="bds_more" data-cmd="more"></a>
 								<a href="#" class="bds_qzone" data-cmd="qzone"></a>
@@ -58,7 +42,7 @@
 	window._bd_share_config = {
 		"common" : {
 			"bdSnsKey" : {},
-			"bdText" : "融资谷资本集团旗下 网贷平台【ubanks】，P2P理财首选平台。综合年化收益18%以上，100%本息安全保障，50元超低门槛，是草根、家庭的理财专属通道！你也赶快来投资，别被银行榨取我们的存款利息！进入平台先注册:${url}reg.htm?param=${userId}",
+			"bdText" : "中国工合实业集团旗下 网贷平台【ubanks】，P2P理财首选平台。综合年化收益18%以上，100%本息安全保障，50元超低门槛，是草根、家庭的理财专属通道！你也赶快来投资，别被银行榨取我们的存款利息！您的好友邀请链接:${url}reg.htm?param=${userId}",
 			"bdMini" : "2",
 			"bdPic" : "",
 			"bdStyle" : "0",
@@ -83,16 +67,19 @@
 								<h4>
 									复制链接发给QQ/MSN上的好友
 								</h4>
-								<textarea class="txta_1" name="contents" id="contents">融资谷资本集团旗下 网贷平台【ubanks】，P2P理财首选平台。综合年化收益18%以上，100%本息安全保障，50元超低门槛，是草根、家庭的理财专属通道！你也赶快来投资，别被银行榨取我们的存款利息！进入平台先注册:${url}reg.htm?param=${userId}</textarea>
+								<span id="testcopy">http://www.baidu.com</span>&nbsp;&nbsp;&nbsp;<a href="#" id="copy"><font color="green">复制</font></a>
+								
+								<p>1234</p>
+								<!-- <textarea class="txta_1" name="contents" id="contents">中国工合实业集团旗下 网贷平台【ghcf】，P2P理财首选平台。综合年化收益18%以上，100%本息安全保障，50元超低门槛，是草根、家庭的理财专属通道！你也赶快来投资，别被银行榨取我们的存款利息！进入平台先注册:${url}reg.htm?param=${userId}</textarea>
 								<div class="fzfx_an">
 									<a href="javascript:void(0);" onclick=
 	jsCopy();
 ><img
 											src="./images/img/fzfx_an.jpg" width="103" height="29" /> </a>
-								</div>
+								</div>  -->
 							</div>
 
-							<div class="yqhy_text1">
+							<!-- <div class="yqhy_text1">
 								<h4>
 									还可以通过邮件推荐
 								</h4>
@@ -134,7 +121,7 @@
 > <img
 											src="./images/img/fs_an.jpg" width="103" height="29" /> </a>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 
@@ -188,12 +175,19 @@
 			});
 	}
 </script>
+<script>
+$("#copy").click(function(event){
+	$("#testcopy").clone(true).appendTo("p");
+});
+</script>
 
 		<script type="text/javascript">
 	function jsCopy() {
 		var e = document.getElementById("contents");//对象是content 
 		e.select(); //选择对象 
 		document.execCommand("Copy"); //执行浏览器复制命令
+		
+		
 	}
 </script>
 
@@ -203,11 +197,10 @@
 		$("#zh_hover").attr('class', 'nav_first');
 		$("#zh_hover div").removeClass('none');
 		$('#li_6').addClass('on');
-
 		init();
 	});
 </script>
 
-	</body>
-</html>
+</block>
+</block >
 
