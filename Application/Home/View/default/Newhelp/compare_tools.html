@@ -1,437 +1,213 @@
-<block name="body">
-<extend name="Base/common"/>
-<block name="body">
-		<%--header--%>
-		<jsp:include page="/include/topref.jsp"></jsp:include>
-		<%-- header end--%>
-		<%--banner--%>
-		<%-- banner end--%>
-		<%--收益计算器--%>
-		<div class="main_kan_new" style="min-height: 0;">
-			<div id="wrapper">
-				<div class="title-sub">
-					<h2 id="htop">
-						收益对比
-					</h2>
-					<b class="line"></b>
+<block name="body"> <extend name="Base/common" /> <block
+	name="body"> <!--header--> <jsp:include
+	page="/include/topref.jsp"></jsp:include> <!-- header end--> <!--banner-->
+<!-- banner end--> <!--收益计算器-->
+<div class="main_kan_new" style="min-height: 0;">
+	<div id="wrapper">
+		<div class="title-sub">
+			<h2 id="htop">收益计算器</h2>
+			<b class="line"></b>
+		</div>
+		<div class="content_post">
+			<div class="bid-opt">
+				<ul class="items">
+					<li class="txt">投入金额：</li>
+					<li><input type="text" class="input" id="borrowSum" /> <label>
+							元 </label> <span id="" class="tip error" style="display: none;"><i
+							class="icons reg-error"></i><font color="red">该数值须为不小于200元的整数</font></span></li>
+				</ul>
+				<div class="clearfix" style="display: block">
+					<ul class="items">
+						<li class="txt">年化利率：</li>
+						<li><input id="yearRate" type="text" class="input" /> <label>
+								% </label> <span class="tip error"></span></li>
+					</ul>
+					<ul class="items">
+						<li class="txt">投入时长：</li>
+						<li><input id="borrowTime" type="text" class="input" /> <label
+							id="timeType"> 月 </label> <span class="tip error"
+							style="display: none;">增加您的资金利用率</span></li>
+					</ul>
+					<ul class="items">
+						<li class="txt">还款方式：</li>
+						<li><select id="repayWay" name="select">
+								<option selected="selected" value="0">等额本息</option>
+								<option value="1">先息后本</option>
+								<option value="2">一次性还款</option>
+						</select> <span class="tip" style="display: none;">这部分金额不会加入自动投标</span></li>
+					</ul>
 				</div>
-				<div class="content_post">
-					<div class="bid-opt">
-						<ul class="items">
-							<li class="txt">
-								投入金额：
-							</li>
-							<li>
-								<input type="text" class="input" value="" id="money">
-								<label>
-									元
-								</label>
-							</li>
-							<li class="tsxx">
-								<span id="span" class="tip error" style="display: none;"><i
-									class="icons reg-error"></i>该数值须为不小于200元的整数</span>
-							</li>
-						</ul>
-						<div class="clearfix" style="display: block">
-
-
-							<ul class="items">
-								<li class="txt">
-									投入时长：
-								</li>
-								<li>
-									<select id="repayType">
-										<option value="10">
-											10
-										</option>
-										<option value="15">
-											15
-										</option>
-										<option value="20">
-											20
-										</option>
-										<option value="30">
-											30
-										</option>
-										<option value="60">
-											60
-										</option>
-										<option value="90">
-											90
-										</option>
-										<option value="120">
-											120
-										</option>
-									</select>
-									<label>
-										天
-									</label>
-									<span class="tip" style="display: none;">增加您的资金利用率</span>
-								</li>
-							</ul>
-
-
-							<ul style="height: 40px" class="items">
-								<li class="txt">
-									投入方式：
-								</li>
-								<li id="reCastBox" class="checkbox-list">
-									<ul>
-										<li>
-											<input name="" type="checkbox" checked="checked" value="1"
-												id="futou" />
-											复投
-										</li>
-									</ul>
-								</li>
-							</ul>
-							<ul class="items" style="margin-bottom: 10px;">
-								<li class="txt">
-									对比产品：
-								</li>
-								<li>
-									<ul class="checkbox-list">
-										<li>
-											<input name="" type="checkbox" checked="checked" value="2"
-												id="rzgli" />
-											融资谷理财
-										</li>
-										<li>
-											<input name="" type="checkbox" checked="checked" value="3"
-												id="bankh" />
-											银行活期
-										</li>
-										<%-- <li>
-											<input name="" type="checkbox" checked="checked" value="4" />
-											银行定期
-										</li> --%>
-										<li>
-											<input name="" type="checkbox" checked="checked" value="5"
-												id="rice" />
-											货币基金
-										</li>
-										<%-- <li>
-											<input name="" type="checkbox" checked="checked" value="6"
-												id="licai" />
-											银行理财
-										</li> --%>
-									</ul>
-								</li>
-
-							</ul>
-						</div>
-						<div class="btn-submit">
-							<a href="javascript:void(0);" class="gbtn" id="calBt">计算</a>
-							<a href="comparetools.do" class="gbtn gbtn-gray">重置</a>
-						</div>
-					</div>
-					<div class="jsq_right">
-						<div class="jsqyb_con1">
-							<h2>
-								对比结果
-							</h2>
-							<p class="dqsy">
-								（单位）元
-							</p>
-							<div class="sydbt" id="placeholder">
-								<div id="container" style="width: 320px; height: 200px"></div>
-							</div>
-						</div>
-					</div>
-					<div class="clear"></div>
+				<div style="margin-left: 120px;">
+					<strong><span style="color: red; float: none;"
+						class="formtips" id="show_error"></span> </strong>
+				</div>
+				<div class="btn-submit">
+					<a href="javascript:void(0);" id="calcultor" class="gbtn">计算</a> <a
+						href="" class="gbtn gbtn-gray">重置</a> <!-- <input id="manual"
+						class="helpId" type="checkbox" value="" name="cb_ids"
+						onclick="changeStatus();" /> &nbsp;天标 -->
 				</div>
 			</div>
+			<div class="jsq_right">
+				<div class="jsqyb_con1" id="calcResult">
+					<h2>计算结果</h2>
+					<div id="totalResult">
+						<p class="gjjg">
+							每月收益： <strong id="aa" style="color: #166cb2;">0.00元</strong> 月利率：
+							<strong id="bb" style="color: #166cb2;">0%</strong><br /> 本息总额：
+							<strong id="cc" style="color: #166cb2;">0元</strong>
+						</p>
+						<p class="gjjg">
+							<table border="1" style="display: none; color: blue"
+							id="tabresult"><tr>
+								<td align="center">期数</td>
+								<td align="center">月收本息</td>
+								<td align="center">月收本金</td>
+								<td align="center">月收利息</td>
+								<td align="center">本息余额</td>
+							</tr>
+							<tr>
+								<td align="center" id="periods"></td>
+								<td align="center" id="principal"></td>
+								<td align="center" id="corpus"></td>
+								<td align="center" id="interest"></td>
+								<td align="center" id="remainder"></td>
+							</tr>
+						</table>
+						</p>
+					</div>
+					<div id="result" style="display: none">
+						<p class="gjjg">
+							收款本息总额： <strong id="dd">0元</strong>
+						</p>
+					</div>
+					<br /> <span id="showPayTable"></span>
+				</div>
+				<div class="jsqyb_con1" style="margin-top: 20px;">
+					<h2>收益计算器简介</h2>
+					<p>
+						收益计算器用于计算您在工合财富投资将会获得的收益，理财更加透明高效，固定日还款项目由于计息方式略有不同，具体收益请参见投资后的统计。
+					</p>
+				</div>
+			</div>
+			<div class="clear"></div>
 		</div>
-		<script>
-function cateGories(licaiMoney, bankMoney, huobiMoney) {
-	var licai = licaiMoney + '';
-	var bank = bankMoney + '';
-	var huobi = huobiMoney + '';
-	var reg=/^[1-9]+[0-9]*]*$/ ;//判断数字是否为整数
-	var licairich = 0.0;
-	var bankrich = 0.0;
-	var huobirich =0.0;
-	if(reg.test(licai)){
-		licairich=licaiMoney;
-	}else{
-	    licai = licai.substring(0, licai.indexOf('.') + 3);
-	    licairich=parseFloat(licai);
-	}
-	if(reg.test(bank)){
-		bankrich=bankMoney;
-	}else{
-	bank = bank.substring(0, bank.indexOf('.') + 3);
-	   bankrich=parseFloat(bank);
-	}
-	if(reg.test(bank)){
-		bankrich=huobiMoney;
-	}else{
-		huobi = huobi.substring(0, huobi.indexOf('.') + 3);
-		huobirich=parseFloat(huobi);
-	}
-$('#container').highcharts( {
-			chart : {
-				type : 'column'
-			},
-			title : {
-				text : ''
-			},
+	</div>
+</div>
+<script>
+	
+</script> <!--bottom--> <!-- bottom end--> <script type="text/javascript">
+	$("#calcultor")
+			.click(
+					function() {
+						//alert("123456");
+						var repayWay = $("#repayWay").val();
+						var investMoney = $("#borrowSum").val();
+						if (!isNaN(investMoney)) { //判断是否是数字
+							if (investMoney == "" || investMoney < 200) {
+								$("#borrowSum").next().next().show();
+								return false;
+							}
+						} else {
+							$("#borrowSum")
+									.next()
+									.next()
+									.show()
+									.html(
+											"<i class='icons reg-error'></i><font color='red'>请输入正确的数字!</font></span></li>");
+							return false;
+						}
 
-			xAxis : {
-				categories : [ '融资谷理财', '银行活期', '货币基金' ]
-			},
-			yAxis : {
-				min : 0,
-				title : {
-					text : '单位/(元)'
-				},
-				labels : {  
-	                formatter : function() {//设置纵坐标值的样式  
-	                 return this.value;  
-	                }  
-	              }   
-	           
-			},
+						var yearRate = $("#yearRate").val();
+						if (!isNaN(yearRate)) { //判断是否是数字
+							if (yearRate == "") {
+								$("#yearRate").next().next().show().html(
+										"<font color='red'>年化利率不能为空！</font>");
+								return false;
+							}
+						} else {
+							$("#yearRate").next().next().show().html(
+									"<font color='red'>请输入正确的年化利率!</font>");
+							return false;
+						}
 
-			legend: {
-            enabled: false
-        },
-        tooltip: {
-            pointFormat: '{point.y:.1f}',
-        },
-			series : [ {
-				name : '收益金額',
-				data : [ licairich, bankrich, huobirich ],
-				dataLabels: {
-                enabled: true,
-                color: 'black',
-                align: 'center',
-                x: 4,
-                y: 5,
-                style: {
-                    fontSize: '13px',
-                    fontFamily: '',
-                    textShadow: '0 0 8px black'
-                }
-            }
+						var borrowTime = $("#borrowTime").val();
+						var ex = /^\d+$/;
+						if (!isNaN(borrowTime) && ex.test(borrowTime)) { //判断是否是数字
+							if (yearRate == "") {
+								$("#borrowTime")
+										.next()
+										.next()
+										.show()
+										.html(
+												"<font color='red'>投入时常不能为空并且为整数！</font>");
+								return false;
+							}
+						} else {
+							$("#borrowTime").next().next().show().html(
+									"<font color='red'>请输入正常的投入时常!</font>");
+							return false;
+						}
 
-			} ]
-		});
-	}
-</script>
-		<script>
-var licaiMoney = 0.0;//融资谷理财
-var bankMoney = 0.0;//银行活期
-var huobiMoney = 0.0;//货币基金
-//var bankliCai = 0.0;//银行理财
-$("#calBt").click(function() {
-	var money = $('#money').val();
-	var repayType = $('#repayType').val();
-	//alert(1000 * Math.pow(1 + (0.186 / 12), 4) - 1000);
-		//alert(repayType);
-		if (money == null || money < 200) {
-			$('#span').show();
-			return false;
-		}
-		licaiMoney = rizgLiCai(repayType, money);
-		bankMoney = bankH(repayType, money);
-		huobiMoney = riceCal(repayType, money);
+						var totalMomey = "";//总金额全局变量
+						var rate = yearRate / 100;//先转换为百分数
+						var monthrate = yearRate / 12;//转换为月利率
+						//等额本息计算方法
+						if (repayWay == 0) {
+							totalMoney = (investMoney * (rate / 12) * Math.pow(
+									(1 + (rate / 12)), borrowTime))
+									/ (Math.pow(1 + (rate / 12), borrowTime) - 1);
+							$("#aa").html(
+									"<font color='red'>" + totalMoney
+											+ "元</font>");
+							$("#bb").html(
+									"<font color='red'>" + monthrate
+											+ "%</font>");
+							$("#cc")
+									.html(
+											"<font color='red'>"
+													+ (parseFloat(totalMoney) * parseFloat(borrowTime))
+													+ "元</font>");
+							//等额本息列表清单循环代码结构
+						}
 
-		//bankliCai = bankLiCai(repayType, money);
-		//alert(licaiMoney);
-		//alert(bankMoney);
-		//alert(huobiMoney);
-		cateGories(licaiMoney, bankMoney, huobiMoney);
-	});
-</script>
-		<%-- 融资谷理财开始    start --%>
-		<script>
-var licaiMoney = 0.0;
-function rizgLiCai(repayType, money) {
-	//单选融资谷理财--------------融资谷理财
-	if ($('#rzgli').attr('checked') == 'checked') {
-		//按天计算
-		if (repayType == 10) {
-			licaiMoney = money * (0.13 / 360) * repayType;
-		}
-		if (repayType == 15) {
-			licaiMoney = money * (0.14 / 360) * repayType;
-		}
-		if (repayType == 20) {
-			licaiMoney = money * (0.15 / 360) * repayType;
-			//alert(licaiMoney);
-		}
-		//按月计算
-		if (repayType == 30) {
-			licaiMoney = money * (0.18 / 12) * 1;
-		}
-		if (repayType == 60) {
-			licaiMoney = money * (0.186 / 12) * 2;
-		}
-		if (repayType == 90) {
-			licaiMoney = money * (0.192 / 12) * 3;
-		}
-		if (repayType == 120) {
-			licaiMoney = money * (0.198 / 12) * 4;
-		}
-	}
+						//先息后本的方法
+						if (repayWay == 1) {
+							totalMoney = investMoney * (rate / 12);
+							$("#aa").html(
+									"<font color='red'>" + totalMoney
+											+ "元</font>");
+							$("#bb").html(
+									"<font color='red'>" + monthrate
+											+ "%</font>");
+							$("#cc")
+									.html(
+											"<font color='red'>"
+													+ ((parseFloat(totalMoney) * parseFloat(borrowTime)) + parseFloat(investMoney))
+													+ "元</font>");
+							//先息后本列表清单循环结构代码
+						}
 
-	//选择复投方式以及融资股理财
-	if ($('#rzgli').attr('checked') == 'checked'
-			&& $('#futou').attr('checked') == 'checked') {
-		//按天计算
-		if (repayType == 10) {
-			licaiMoney = money * (0.13 / 360) * repayType;
-		}
-		if (repayType == 15) {
-			licaiMoney = money * (0.14 / 360) * repayType;
-		}
-		if (repayType == 20) {
-			licaiMoney = money * (0.15 / 360) * repayType;
-			//alert(licaiMoney);
-		}
-		//按月计算大于1个月有复投方式
-		if (repayType == 30) {
-			licaiMoney = money * (0.18 / 12) * 1;
-		}
-
-		if (repayType == 60) {
-			licaiMoney = money * Math.pow(1 + (0.186 / 12), 2) - money;
-		}
-		if (repayType == 90) {
-			licaiMoney = money * Math.pow(1 + (0.192 / 12), 3) - money;
-		}
-		if (repayType == 120) {
-			licaiMoney = money * Math.pow(1 + (0.198 / 12), 4) - money;
-		}
-	}
-	return licaiMoney;
-}
-</script>
-		<%-- 银行活期开始   start --%>
-		<script>
-var bankMoney = 0.0;
-function bankH(repayType, money) {
-	//复投不投算法一样
-	//单选银行活期-----------------银行活期
-	if ($('#bankh').attr('checked') == 'checked') {
-		//按天计算
-		if (repayType == 10) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-		if (repayType == 15) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-		if (repayType == 20) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-		//按月计算
-		if (repayType == 30) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-		if (repayType == 60) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-		if (repayType == 90) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-		if (repayType == 120) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-	}
-
-	//选择复投方式以及银行活期
-	if ($('#bankh').attr('checked') == 'checked'
-			&& $('#futou').attr('checked') == 'checked') {
-		//按天计算
-		if (repayType == 10) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-		if (repayType == 15) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-		if (repayType == 20) {
-			bankMoney = money * (0.0035 / 360) * repayType;
-		}
-		//按月计算大于1个月有复投方式
-		if (repayType == 30) {
-			bankMoney = money * (0.0035 / 12) * 1;
-		}
-
-		if (repayType == 60) {
-			bankMoney = money * Math.pow(1 + (0.0035 / 12), 2) - money;
-		}
-		if (repayType == 90) {
-			bankMoney = money * Math.pow(1 + (0.0035 / 12), 3) - money;
-		}
-		if (repayType == 120) {
-			bankMoney = money * Math.pow(1 + (0.0035 / 12), 4) - money;
-		}
-	}
-	return bankMoney;
-}
-</script>
-		<%--货币基金开始  start  --%>
-		<script>
-var rice = 0.0;
-function riceCal(repayType, money) {
-	if ($('#rice').attr('checked') == 'checked') {
-		//按天计算
-		if (repayType == 10) {
-			rice = money * (0.0448 / 360) * repayType;
-		}
-		if (repayType == 15) {
-			rice = money * (0.0448 / 360) * repayType;
-		}
-		if (repayType == 20) {
-			rice = money * (0.0448 / 360) * repayType;
-		}
-		//按月计算
-		if (repayType == 30) {
-			rice = money * (0.0448 / 12) * 1;
-		}
-		if (repayType == 60) {
-			rice = money * (0.0448 / 12) * 2;
-		}
-		if (repayType == 90) {
-			rice = money * (0.0448 / 12) * 3;
-		}
-		if (repayType == 120) {
-			rice = money * (0.0448 / 12) * 4;
-		}
-	}
-
-	//选择复投方式以及货币基金
-	if ($('#rice').attr('checked') == 'checked'
-			&& $('#futou').attr('checked') == 'checked') {
-		//按天计算
-		if (repayType == 10) {
-			rice = money * (0.0448 / 360) * repayType;
-		}
-		if (repayType == 15) {
-			rice = money * (0.0448 / 360) * repayType;
-		}
-		if (repayType == 20) {
-			rice = money * (0.0448 / 360) * repayType;
-		}
-		//按月计算
-		if (repayType == 30) {
-			rice = money * (0.0448 / 12) * 1;
-		}
-		if (repayType == 60) {
-			rice = money * Math.pow(1 + (0.0448 / 12), 2) - money;
-		}
-		if (repayType == 90) {
-			rice = money * Math.pow(1 + (0.0448 / 12), 3) - money;
-		}
-		if (repayType == 120) {
-			rice = money * Math.pow(1 + (0.0448 / 12), 4) - money;
-		}
-	}
-	return rice;
-}
-</script>
-		<%--bottom--%>
-		<jsp:include page="/include/footer.jsp"></jsp:include>
-		<%-- bottom end--%>
-</block>
+						//一次性还款的计算方法
+						if (repayWay == 2) {
+							totalMoney = investMoney
+									* Math.pow(((1 + (rate / 12))), borrowTime);
+							$("#aa").html(
+									"<font color='red'>" + totalMoney
+											+ "元</font>");
+							$("#bb").html(
+									"<font color='red'>" + monthrate
+											+ "%</font>");
+							$("#cc").html(
+									"<font color='red'>"
+											+ (parseFloat(totalMoney))
+											+ "元</font>");
+							$("#tabresult").show();
+							$("#periods").html(borrowTime);
+							$("#principal").html(totalMoney);
+							$("#corpus").html(investMoney);
+							$("#interest").html(monthrate);
+							$("#remainder").html('0.00');
+						}
+					});
+</script> </block>

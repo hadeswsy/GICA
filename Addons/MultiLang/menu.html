@@ -1,0 +1,22 @@
+<div class="btn-group lang-switch">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    {:L('lang_switch')} <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <volist name="langs" id="lang" >
+        <?php $cookielang = cookie('think_language');?>
+        <li class="<eq name="cookielang" value="$lang">active</eq>">
+            <?php $url = array_merge($get,array(C('VAR_LANGUAGE')=> $lang));?>
+            <a href="{:U('',$url)}" class="center">
+                   {:L($lang)}
+            </a>
+        </li>
+    </volist>
+  </ul>
+</div>
+<style type="text/css">
+    .lang-switch{float: right}
+    .lang-switch ul{display: none;}
+    .lang-switch:hover ul{display: block; background-color:#EEE;text-align: center}
+    .lang-switch ul li.active{background-color:#DDD;}
+</style>

@@ -1,13 +1,13 @@
 <block name="body">
 <extend name="Base/common"/>
 <block name="body">
-		<!-- 引用头部公共部分 -->
-		<div class="nymain">
-			<div class="bigbox" style="border: none">
-
-				<div class="sqdk" style="background: none;">
-                    <include file="Public/borrowleft"/>
-					<div class="r-main">
+		<!--content start-->
+	<div class="zh_cont_out">
+    	<div class="zh_cont">
+            <h2><a href="{:U('Index')}">我的账户</a></h2>	
+            	<include file="Public/borrowleft"/>
+            <div class="zh_cont_r">
+            	<div class="r-main">
 						<div class="til01">
 							<ul>
 								<li class="on">
@@ -31,38 +31,41 @@
 								</p>
 								<div class="jbrz">
 									<ul>
-
-												<li>
-													<div class="pic">
-														<img src="__STATIC__/rzg_images/baseimage_1.jpg" width="62"
-															height="62" id="img_identiy" />
-													</div>
-													<div class="shangchuan">
-														<h3>
-															
-														</h3>
-         <input type="button" id="bu_identiy" class="scbtn" style="cursor: pointer;" value="点击上传" onclick="fff()"/>
-													</div>
-													<div class="shico">
-														待上传
-													</div>
-												</li>
+										<li>
+											<div class="pic">
+												<img src="__STATIC__/rzg_images/baseimage_1.jpg" width="62"
+													height="62" id="img_identiy" />
+											</div>
+											<div class="shangchuan">
+												<h3>
+													
+												</h3>
+ <input type="button" id="test2" class="scbtn" style="cursor: pointer;" value="添加" onclick="fff()"/>
+											</div>
+											<div class="shico">
+												待上传
+											</div>
+										</li>
+										
 									</ul>
 									<div class="clear"></div>
 								</div>
 							</div>
 							<div class="rzbox">
 								<h3>
-									可选认证
+									已上传的认证
 								</h3>
 								<p class="txt">
 									&nbsp;
 								</p>
 								<div class="kxrz">
 									<ul>
-
-
-												<li>
+										<volist name="list" id="vo">
+										<li style="padding:0px;width:200px;height:90px;">
+												<img src="Uploads/{$vo.data_url}" width="200"height="90" id="img_identiy" />
+										</li>
+										</volist>
+												<!-- <li>
 													<div class="shangchuan">
 														<h3>
 														</h3>
@@ -72,29 +75,20 @@
 															<s:else>待上传</s:else>
 														</div>
 													</div>
-												</li>
+												</li> -->
 									</ul>
 									<div class="clear"></div>
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-		<div>
-			<a id="fancybox" href="#fancybox-main" title="" style="display: none">Inline</a>
-		</div>
-		<div style="display: none;">
-			<div id="fancybox-main">
-				<img src="" id="imagesa" width="500" height="500" />
-				<br />
-				<div class="photoButton">
-					<a id="small" title="缩放图片"></a><a id="normal" title="原图"></a><a
-						id="big" title="放大图片"></a>
-				</div>
-			</div>
-		</div>
+            	
+            </div>
+            </div>
+        </div>
+    </div>
+	<!--content end-->		
+
 
 
 <!-- 		 这个是layer插件的 
@@ -891,5 +885,25 @@
 	function shipingcheckf() {
 		window.location.reload();
 	}
+</script>
+<script>
+//资料上传
+	$('#test2').on('click', function(){
+		// layer.msg('正在施工，无法更换');
+
+
+    $.layer({
+        type: 1,
+        title: [
+            '图片上传', 
+            'background:#2B2E37; height:40px; color:#fff; border:none;' //自定义标题样式
+        ],  //不显示默认标题栏
+        offset : ['250px', ''],
+        shade: [1], //不显示遮罩
+        area: ['260px', '100px'],
+        page: {html: '<form action="__URL__/upload" enctype="multipart/form-data" method="post"><input type="file"  name="filename" value=""><input  type="submit"  value="上传"></from>'},
+    });
+ });
+
 </script>
 </block>

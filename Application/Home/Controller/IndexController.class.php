@@ -15,8 +15,10 @@ class IndexController extends HomeController {
         $category = D('Category')->getTree();
         $map = array('category_id' => 2);
         $map1 = array('category_id' => 40);
-        $lists    = D('Document')->where($map)->lists(null);
+        $map2 = array('category_id' => 43);
+        $lists    = D('Document')->where($map)->limit(6)->select();
         $lists1    = D('Document')->where($map1)->lists(null);
+        $lists3    = D('Document')->where($map2)->limit(6)->select();
         
 
         $lists2    = D('z_borrow_investor')->field('investor_uid,sum(investor_capital)investor_capital')->order('investor_capital desc')->group('investor_uid')->select();
@@ -39,12 +41,22 @@ class IndexController extends HomeController {
         $count      = $listBorrow ->where('borrow_status not in (1,5,3)')->count();
         $Page = new  \Think\Page($count, 8);
         $show       = $Page->show();
-        $orderby['id']='desc';
+        $orderby['borrow_status']='ASC';
         $list = $listBorrow->where('borrow_status not in (1,5,3)')->order($orderby)->limit($Page->firstRow.','.$Page->listRows)->select();
+
+        if ($list[0]['has_borrow'] ==0) {
+            $jindu=0;
+        }
+        else {
+           
+        }
+       
+        $this->assign('jindu',$jindu);//栏目
         $this->assign('category',$category);//栏目
         $this->assign('lists',$lists);//列表
         $this->assign('lists1',$lists1);
         $this->assign('lists2',$lists2);
+        $this->assign('lists3',$lists3);
         $this->assign('list2',$list);
         $this->assign('page',$show);
         $this->display();

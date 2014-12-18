@@ -1,27 +1,13 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/include/taglib.jsp"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-	<head>
-
-		<jsp:include page="/include/head.jsp"></jsp:include>
-		<link rel="stylesheet" href="css/style.css" type="text/css"></link>
-		<link rel="stylesheet" href="css/base.css" type="text/css"></link>
-		<link href="css/inside.css" rel="stylesheet" type="text/css" />
-		<link id="skin" rel="stylesheet" href="css/jbox/Gray/jbox.css" />
-	</head>
-	<body>
-		<!-- 引用头部公共部分 -->
-		<jsp:include page="/include/topref.jsp"></jsp:include>
-		<div class="nymain">
-			<div class="wdzh">
-				<div class="l_nav">
-					<div class="box">
-						<!-- 引用我的帐号主页左边栏 -->
-						<%@include file="/include/left.jsp"%>
-					</div>
-				</div>
-				<div class="r_main">
+<block name="body">
+<extend name="Base/common"/>
+<block name="body">
+		<!--content start-->
+	<div class="zh_cont_out">
+    	<div class="zh_cont">
+            <h2><a href="{:U('Index')}">我的账户</a></h2>	
+            	<include file="Public/left"/>
+            <div class="zh_cont_r">
+            	<div class="r_main">
 					<div class="box">
 						<div class="tabtil">
 							<ul>
@@ -53,17 +39,17 @@
 									<tr>
 										<td align="center">
 											￥
-											<s:if test="#request.financeStatisMap.earnInterest !=''">${financeStatisMap.earnInterest}</s:if>
+											<s:if test="#request.financeStatisMap.earnInterest !=''"></s:if>
 											<s:else>0</s:else>
 										</td>
 										<td align="center">
 											￥
-											<s:if test="#request.financeStatisMap.rewardIncome !=''">${financeStatisMap.rewardIncome}</s:if>
+											<s:if test="#request.financeStatisMap.rewardIncome !=''"></s:if>
 											<s:else>0</s:else>
 										</td>
 										<td align="center">
 											￥
-											<s:if test="#request.financeStatisMap.hasFI !=''">${financeStatisMap.hasFI}</s:if>
+											<s:if test="#request.financeStatisMap.hasFI !=''"></s:if>
 											<s:else>0</s:else>
 										</td>
 									</tr>
@@ -100,29 +86,29 @@
 									<tr>
 										<td align="center">
 											￥
-											<s:if test="#request.financeStatisMap.investAmount !=''">${financeStatisMap.investAmount}</s:if>
+											<s:if test="#request.financeStatisMap.investAmount !=''"></s:if>
 											<s:else>0</s:else>
 										</td>
 										<td align="center">
-											<s:if test="#request.financeStatisMap.investCount !=''">${financeStatisMap.investCount}</s:if>
-											<s:else>0</s:else>
-										</td>
-										<td align="center">
-											￥
-											<s:if test="#request.financeStatisMap.hasPI !=''">${financeStatisMap.hasPI}</s:if>
-											<s:else>0</s:else>
-										</td>
-										<td align="center">
-											<s:if test="#request.financeStatisMap.hasCount !=''">${financeStatisMap.hasCount}</s:if>
+											<s:if test="#request.financeStatisMap.investCount !=''"></s:if>
 											<s:else>0</s:else>
 										</td>
 										<td align="center">
 											￥
-											<s:if test="#request.financeStatisMap.forPI !=''">${financeStatisMap.forPI}</s:if>
+											<s:if test="#request.financeStatisMap.hasPI !=''"></s:if>
 											<s:else>0</s:else>
 										</td>
 										<td align="center">
-											<s:if test="#request.financeStatisMap.forCount !=''">${financeStatisMap.forCount}</s:if>
+											<s:if test="#request.financeStatisMap.hasCount !=''"></s:if>
+											<s:else>0</s:else>
+										</td>
+										<td align="center">
+											￥
+											<s:if test="#request.financeStatisMap.forPI !=''"></s:if>
+											<s:else>0</s:else>
+										</td>
+										<td align="center">
+											<s:if test="#request.financeStatisMap.forCount !=''"></s:if>
 											<s:else>0</s:else>
 										</td>
 									</tr>
@@ -131,16 +117,82 @@
 							</div>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
+            </div>
+            </div>
+        </div>
+    </div>
+	<!--content end-->
 		<!-- 引用底部公共部分 -->
 		<jsp:include page="/include/footer.jsp"></jsp:include>
-
+		<script type="text/javascript" src="/script/jquery-1.7.1.min.js"></script>
+		<script type="text/javascript" src="script/jquery.shove-1.0.js"></script>
+		<script type="text/javascript" src="script/nav-zh.js"></script>
+		<script language="javascript" type="text/javascript"
+			src="My97DatePicker/WdatePicker.js"></script>
 		<script>
 	$(function() {
-		$('#li_12').addClass('on');
+		//样式选中
+		$("#zh_hover").attr('class', 'nav_first');
+		$('#li_2').addClass('on');
+		$('.tabmain').find('li').click(function() {
+			$('.tabmain').find('li').removeClass('on');
+			window.location.href = 'queryFundrecordInit.htm';
+		});
 	});
+
+	function jumpUrl(obj) {
+		window.location.href = obj;
+	}
 </script>
-	</body>
-</html>
+		<script>
+	function fundRecordList() {
+		if ($("#startTime").val() == "" || $("#endTime").val() == "") {
+			alert("请选择查询日期");
+			return;
+		} else if ($("#startTime").val() > $("#endTime").val()) {
+			alert("结束日期要大于开始日期");
+			return;
+		}
+		param["pageBean.pageNum"] = 1;
+		param["paramMap.startTime"] = $("#startTime").val();
+		param["paramMap.endTime"] = $("#endTime").val();
+		$.shovePost("queryFundrecordList.htm", param, function(data) {
+			$("#fundRecord").html(data);
+		});
+	}
+
+	function addRechargeInfo() {
+		if ($("#money").val() == "") {
+			$("#money_tip").html("请输入充值金额");
+			return;
+		} else if (!/^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/
+				.test($("#money").val())) {
+			$("#money_tip").html("请输入正确的提现金额，必须为大于0的数字");
+			return;
+		} else if ($("#money").val() < 0.01) {
+			$("#money_tip").html("最小金额不能低于0.01");
+			return;
+		} else {
+			$("#money_tip").html("");
+		}
+
+		if (!window.confirm("确定进行帐户充值")) {
+			return;
+		}
+		var money = $("#money").val();
+		window.open("alipayPayment.htm?divType=li_2&money=" + money);
+
+		/*param["paramMap.money"] = $("#money").val();
+		$.shovePost("addRechargeInfo.htm",param,function(data){
+		   if(data == 0){
+		      alert("充值失败");
+		      return ;
+		   }
+		   alert("充值成功");
+		   $("#money").attr("value","");
+		   $("#rechargeInfo").html(data);
+		});*/
+	}
+</script>
+</block>
+

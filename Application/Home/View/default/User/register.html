@@ -1,458 +1,229 @@
 <extend name="Base/common" />
-<block name="header">
-<header class="jumbotron subhead" id="overview">
-<div class="container">
-    <h2>用户注册</h2>
-    <p><span><span class="pull-left"><span>已经有账号? <a href="{:U('User/login')}">点此登录</a> </span> </span></p>
-  </div>
-</header>
-</block>
+<block name="header"> <header class="jumbotron subhead"
+	id="overview">
+	<div class="container">
+		<h2>用户注册</h2>
+		<p>
+			<span><span class="pull-left"><span>已经有账号? <a
+						href="{:U('User/login')}">点此登录</a>
+				</span> </span>
+		</p>
+	</div>
+</header> </block>
 
-<block name="body">
-    <jsp:include page="/include/top.jsp"></jsp:include>
+<block name="body"> <!--content start-->
+<div class="dl_cont_out">
+	<div class="dl_cont">
+		<div class="top">
+			<h2>用户注册</h2>
+			<p>
+				已有账户<a href="#">点击登录</a>
+			</p>
+		</div>
+		<form id="form" action="__SELF__" method="post">
+			<dl>
+				<dt>
+					<span>* </span>手机号码:
+				</dt>
+				<dd>
+					<input type="text" value="请输入您的手机号码" name="phone" id="phone"
+						class="txt" />
+				</dd>
+				<span id="checkphone"></span>
+			</dl>
+			<dl>
+				<dt>
+					<span>* </span>电子邮箱:
+				</dt>
+				<dd>
+					<input type="text" value="请输入您的电子邮箱" id="email"
+						ajaxurl="/member/checkUserEmailUnique.html" errormsg="请填写正确格式的邮箱"
+						nullmsg="请填写邮箱" datatype="e" name="email" class="txt" />
+				</dd>
+				<span id="checkemail"></span>
+			</dl>
+			<dl>
+				<dt>
+					<span>* </span>用户名:
+				</dt>
+				<dd>
+					<input type="text" value="请输入您的3-5位用户名" id="username"
+						name="username" class="txt"
+						ajaxurl="/member/checkUserNameUnique.html" errormsg="请填写1-16位用户名"
+						nullmsg="请填写用户名" datatype="*1-16" />
+				</dd>
+				<span id="checkuser"></span>
+			</dl>
+			<dl>
+				<dt>
+					<span>* </span>密码:
+				</dt>
+				<dd>
+					<input type="password" value="" id="password"
+						placeholder="请输入您的6-16位密码" errormsg="密码为6-20位" nullmsg="请填写密码"
+						datatype="*6-20" name="password" class="txt" />
+				</dd>
+				<span id="checkpwd"></span>
+			</dl>
+			<dl>
+				<dt>
+					<span>* </span>确认密码:
+				</dt>
+				<dd>
+					<input type="password" value="" id="repassword"
+						placeholder="再次输入您的密码" name="repassword" recheck="password"
+						errormsg="您两次输入的密码不一致" nullmsg="请填确认密码" datatype="*" class="txt" />
+				</dd>
+				<span id="checkrepwd"></span>
+			</dl>
 
-    <div class="nymain">
-      <div class="bigbox">
-        <div class="til">
-          平台会员注册
-        </div>
-        <div class="sqdk"
-          style="padding-top: 55px; padding-bottom: 80px; padding-left: 60px;">
-          <div class="logintab">
-            <form class="login-form" action="__SELF__" method="post">
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td colspan="2" align="center" width="400px;">
-                    <span style="color: red; width: 100%;"> <s:if
-                        test="#session.DEMO==1">*　请尽量实名注册，这会直接影响您在本平台的信用度。</s:if>
-                      <s:else>
-         </s:else> </span>
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right">
-                    <span class="fred">*</span>用户名：
-                  </th>
-                  <td>
-                    <input type="text" id="inputEmail" class="span3" placeholder="请输入用户名"  ajaxurl="/member/checkUserNameUnique.html" errormsg="请填写1-16位用户名" nullmsg="请填写用户名" datatype="*1-16" value="" name="username">
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right"></th>
-                  <td>
-                    <span style="color: red" id="s_userName" class="formtips"></span>
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right">
-                    <span class="fred">*</span>密码：
-                  </th>
-                  <td>
-                    <input type="password" id="inputPassword"  class="span3" placeholder="请输入密码"  errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password">
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right"></th>
-                  <td>
-                    <span style="color: red" id="s_password" class="formtips"></span>
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right">
-                    <span class="fred">*</span>确认密码：
-                  </th>
-                  <td>
-                    <input type="password" id="inputPassword" class="span3" placeholder="请再次输入密码" recheck="password" errormsg="您两次输入的密码不一致" nullmsg="请填确认密码" datatype="*" name="repassword">
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right"></th>
-                  <td>
-                    <span style="color: red" id="s_confirmPassword"
-                      class="formtips"></span>
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right">
-                    邮箱：
-                  </th>
-                  <td>
-                    <input type="text" id="inputEmail" class="span3" placeholder="请输入电子邮件"  ajaxurl="/member/checkUserEmailUnique.html" errormsg="请填写正确格式的邮箱" nullmsg="请填写邮箱" datatype="e" value="" name="email">
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right">
-                    验证码：
-                  </th>
-                  <td>
-                    <input type="text" id="inputPassword" class="span3" placeholder="请输入验证码"  errormsg="请填写5位验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify">
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right"></th>
-                  <td>
-                    <img class="verifyimg reloadverify" alt="点击切换" src="{:U('verify')}" style="cursor:pointer;">
-                  </td>
-                </tr>
-                <tr>
-                  <th align="right">
-                    &nbsp;
-                  </th>
-                  <td>
-                    <button type="submit" class="btn">注 册</button>
-                  </td>
-                </tr>
-              </table>
-            </form>
-          </div>
-          <div class="tip">
-            <ul>
-              <li>
-                帮助他人 快乐自己 收获利息
-              </li>
-              <li>
-                助您创业 资金周转 分期偿还
-              </li>
-              <li>
-                收益稳定可靠回报高
-              </li>
-              <li>
-                交易安全快捷有保障
-              </li>
-            </ul>
-            <div class="loginbtn">
-              <a href="{:U('Home/User/login')}" class="dlbtn">马上登录</a>
-            </div>
-          </div>
-          <div class="renpic" style="top: 50px;">
-          </div>
-        </div>
-      </div>
-    </div>
-    <input id="demo" type="hidden" value="${DEMO}" />
-    <!-- 引用底部公共部分 -->
-    <jsp:include page="/include/footer.jsp"></jsp:include>
-    <script type="text/javascript" src="script/nav-zh.js">
-</script>
-    <script type="text/javascript">
-      $(function(){
-        $("#tjr").hide();
-      });
-    </script>
-    <script>
-//回车登录
-document.onkeydown = function(e) {
-  if (!e)
-    e = window.event;
-  if ((e.keyCode || e.which) == 13) {
-    regg();
-  }
-}
-</script>
-    <script>
-$(function() {
-  //样式选中
-  $("#zh_hover").attr('class', 'nav_first');
-  $('.tabmain').find('li').click(function() {
-    $('.tabmain').find('li').removeClass('on');
-    $(this).addClass('on');
-    $('.lcmain_l').children('div').hide();
-    $('.lcmain_l').children('div').eq($(this).index()).show();
-  })
-})
-$(document).ready(function() {
-  //失去焦点
-    $("form :input")
-        .blur(function() {
-          //短信码
-            var demo = $('#demo').val();
-            if (demo != 1) {
-              if ($(this).attr("id") == "cellcode") {
-                if (this.value == "") {
-                  $("#s_cellcode").attr("class",
-                      "formtips onError");
-                  $("#s_cellcode").html("请填写短信校验码");
-                } else {
-                  $("#s_cellcode").attr("class", "formtips");
-                  $("#s_cellcode").html("");
-                }
-              }
-            }
-            //userName
-            if ($(this).attr("id") == "userName") {
-              if (this.value == "") {
-                $("#s_userName").attr("class",
-                    "formtips onError");
-                //alert("请输入登录用户名");
-                $("#s_userName").html("请输入登录用户名");
-              } else if (this.value.length < 2) {
-                $("#s_userName").attr("class",
-                    "formtips onError");
-                //alert("用户名长度为5-20个字符");
-                $("#s_userName").html("用户名长度为2-20个字符");
-                // }else if(!/^[^@\/\'\\\"#$%&\^\*]+$/.test(this.value)){
-              } else if (!/^[\u4E00-\u9FA5A-Za-z0-9_]+$/
-                  .test(this.value)) {
-                $("#s_userName").attr("class",
-                    "formtips onError");
-                $("#s_userName").html("用户名不能含有特殊字符");
-              } else {
-                $("#s_userName").html("");
-                checkRegister('userName');
-                $("#s_userName").attr("class", "formtips");
-              }
-            }
-            //password
-            if ($(this).attr("id") == "password") {
-              pwd = this.value;
-              if (this.value == "") {
-                $("#s_password").attr("class",
-                    "formtips onError");
-                //alert("请设置您的密码");
-                $("#s_password").html("请设置您的密码");
-              } else if (this.value.length < 6) {
-                $("#s_password").attr("class",
-                    "formtips onError");
-                //alert("密码长度为6-20个字符");
-                $("#s_password").html("密码长度为6-20个字符");
-              } else {
-                $("#s_password").html("");
-                checkRegister('password');
-                $("#s_password").attr("class", "formtips");
-              }
-            }
-            //confirmPassword
+			<dl>
+				<dt>
+					<span>* </span>验证码:
+				</dt>
+				<dd>
+					<input type="text" value="请输验证码"  class="yz"
+						errormsg="请填写5位验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify"
+						id="verify" /> <img class="yzBtn" alt="点击切换" src="{:U('verify')}"
+						style="cursor: pointer;">
+					<!-- <input type="button" value="手机验证" name="" class="yzBtn"/>
+                    <p class="yz_call">如果收不到验证码，请拨打<span>400-123-4567</span></p> -->
+				</dd>
+				<span id="checkcode"></span>
+			</dl>
+			<dl>
+				<dt>
+					<span></span>推荐人:
+				</dt>
+				<dd>
+					<input type="text" value="推荐人手机号码或用户名" name="introduce" class="txt" />
+				</dd>
+				<span id="checkintroduce"></span>
+			</dl>
+			<div class="zcCheck">
+				<input type="checkbox" value="" name="" class="check"
+					checked="checked" />
+				<p>
+					我已阅读并同意<a href="#">《网站服务协议》</a>
+				</p>
+			</div>
+			<input type="button" value="注册" name="zhuce" id="registerSub"
+				class="zcBtn" onclick="javascript:;" />
+		</form>
+	</div>
+</div>
+<script>
+	$("#registerSub").click(function() {
+		var phone = $("#phone").val();
+		var email = $("#email").val();
+		var username = $("#username").val();
+		var password = $("#password").val();
+		var repassword = $("#repassword").val();
+		var verify = $("#verify").val();
+		
+		//var isMobile=/^(?:13\d|15\d|18\d)\d{5}(\d{3}|\*{3})$/;  //手机号码验证正则表达式
+		if (phone == "") {
+			$("#checkphone").html("<font color='red'>手机号码不能为空！</font>");
+			return false;
+		}else{
+			/* if(!isMobile.test(phone)){
+				$("#checkphone").html("<font color='red'>请输入正确的手机号码！</font>");
+				return false;
+			} */
+		}
+		
+	//	var re = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
+		if (email == "") {
+			if (phone != null) {
+				$("#checkphone").hide();
+			}
+			$("#checkemail").html("<font color='red'>邮箱地址不能为空！</font>");
+			return false;
+		}else{
+			/* if(！re.test(email)){
+				$("#checkemail").html("<font color='red'>请输入正确的邮箱地址！</font>");
+				return false;
+			} */
+		}
+		if (username == "") {
+			if (phone != null) {
+				$("#checkphone").hide();
+			}
+			if (email != null) {
+				$("#checkemail").hide();
+			}
+			$("#checkuser").html("<font color='red'>用户名不能为空！</font>");
+			return false;
+		}
+		if (password == "") {
+			if (phone != null) {
+				$("#checkphone").hide();
+			}
+			if (email != null) {
+				$("#checkemail").hide();
+			}
+			if (username != null) {
+				$("#checkuser").hide();
+			}
+			$("#checkpwd").html("<font color='red'>注册密码不能为空！</font>");
+			return false;
+		}
 
-            if ($(this).attr("id") == "confirmPassword") {
-              if (this.value == "") {
-                $("#s_confirmPassword").attr("class",
-                    "formtips onError");
-                //alert("请再次输入密码确认");
-                $("#s_confirmPassword").html("请再次输入密码确认");
-              } else if (this.value != pwd) {
-                $("#s_confirmPassword").attr("class",
-                    "formtips onError");
-                $("#s_confirmPassword").html("两次输入的密码不一致");
-              } else {
-                $("#s_confirmPassword").attr("class",
-                    "formtips");
-                $("#s_confirmPassword").html("");
-              }
-            }
-          });
+		if (repassword == "") {
+			if (phone != null) {
+				$("#checkphone").hide();
+			}
+			if (email != null) {
+				$("#checkemail").hide();
+			}
+			if (username != null) {
+				$("#checkuser").hide();
+			}
+			if (password != null) {
+				$("#checkpwd").hide();
+			}
+			$("#checkrepwd").html("<font color='red'>确认注册密码不能为空！</font>");
+			return false;
+		}else{
+			if (phone != null) {
+				$("#checkphone").hide();
+			}
+			if (email != null) {
+				$("#checkemail").hide();
+			}
+			if (username != null) {
+				$("#checkuser").hide();
+			}
+			if (password != null) {
+				$("#checkpwd").hide();
+			}
+			if(password!=repassword){
+				$("#checkrepwd").html("<font color='red'>两次输入的密码不一致！</font>");
+				return false;
+			}
+		}
+		
+		if(verify==""){
+			if (phone != null) {
+				$("#checkphone").hide();
+			}
+			if (email != null) {
+				$("#checkemail").hide();
+			}
+			if (username != null) {
+				$("#checkuser").hide();
+			}
+			if (password != null) {
+				$("#checkpwd").hide();
+			}
+			if(repassword!=null){
+				$("#checkrepwd").hide();
+			}
+			$("#checkcode").html("<font color='red'>验证码不能为空！</font>");
+			return false;
+		}
+		$("#form").submit();
 
-    //提交
-  });
-//验证数据
-function checkRegister(str) {
-  var param = {};
-  if (str == "userName") {
-    param["paramMap.email"] = "";
-    param["paramMap.userName"] = $("#userName").val();
-  } else {
-    param["paramMap.email"] = $("#email").val();
-    param["paramMap.userName"] = "";
-  }
-  $.post("ajaxCheckRegister.htm", param, function(data) {
-    if (data == 3 || data == 4) {
-      if (str == "userName") {
-        $("#s_userName").html("该用户已存在");
-      } else {
-        $("#s_email").html("该邮箱已注册");
-      }
-    }
-  });
-
-}
-//========
-
-</script>
-    <script>
-$("#btn_cellregs").click(function() {
-  regg();
-});
-</script>
-    <script>
-var falg = true;
-function regg() {
-  if (falg) {
-    falg = false;
-    var errornum = $("form .onError").length;
-    if ($("#cellcode").val() == "") {
-      var demo = $('#demo').val();
-      if (demo != 1) {
-        $("#s_cellcode").html("短信校验码错误");
-        falg = true;
-        return false;
-      }
-    } else if ($("#userName").val() == "") {
-      $("#s_userName").html("请输入登录用户名");
-      falg = true;
-      return false;
-    } else if ($("#password").val() == "") {
-      $("#s_password").html("请设置您的密码");
-      falg = true;
-      return false;
-    } else if ($("#confirmPassword").val() == "") {
-      $("#s_confirmPassword").html("请再次输入密码确认");
-      falg = true;
-      return false;
-    } else if (errornum > 0) {
-      alert('请正确填写注册信息');
-      falg = true;
-      return false;
-    } else {
-    }
-    if ($("#cellphone").val() == "") {
-      alert("手机号码错误");
-      falg = true;
-      return false;
-    }
-    $('#btn_cellregs').attr('value', '注册中...');
-    var param = {};
-    param["paramMap.cellphone"] = $("#cellphone").val();
-    param["paramMap.cellcode"] = $("#cellcode").val();
-    param["paramMap.userName"] = $("#userName").val();
-    param["paramMap.password"] = $("#password").val();
-    param["paramMap.confirmPassword"] = $("#confirmPassword").val();
-    param["paramMap.refferee"] = $("#refferee").val();
-    param["paramMap.code"] = $("#code").val();
-    param["paramMap.param"] = $("#param").val();
-    $.post("cellreginfo.htm", param, function(data) {
-      if (data.mailAddress == '0') {
-        $("#s_code").html("验证码输入有误，请重新输入");
-        $('#btn_cellregs').attr('value', '免费注册');
-        falg = true;
-      } else if (data.mailAddress == '1') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        $("#s_confirmPassword").html("两次输入的密码不一致");
-        falg = true;
-      } else if (data.mailAddress == '2') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        $("#s_userName").html("该用户已存在");
-        falg = true;
-      } else if (data.mailAddress == '3') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        $("#s_email").html("该邮箱已注册");
-        falg = true;
-      } else if (data.mailAddress == '4') {
-        alert("注册失败！");
-        $('#btn_cellregs').attr('value', '免费注册');
-        falg = true;
-      } else if (data.mailAddress == '5') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        falg = true;
-        alert("推荐人填写错误！");
-      } else if (data.mailAddress == '12') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        falg = true;
-        $("#s_email").html("请输入您的邮箱地址");
-      } else if (data.mailAddress == '13') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        falg = true;
-        $("#s_userName").html("请输入登录用户名");
-      } else if (data.mailAddress == '14') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        $("#s_password").html("请设置您的密码");
-        falg = true;
-      } else if (data.mailAddress == '15') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        $("#s_confirmPassword").html("请再次输入密码确认");
-        falg = true;
-      } else if (data.mailAddress == '16') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        falg = true;
-        alert("注册失败");
-      } else if (data.mailAddress == '18') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        $("#s_userName").html("用户名长度为2-20个字符");
-        falg = true;
-      } else if (data.mailAddress == '20') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        $("#s_userName").html("用户名不能含有特殊字符");
-        falg = true;
-      } else if (data.mailAddress == '21') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        $("#s_userName").html("用户名第一个字符不能是下划线");
-        falg = true;
-      } else if (data.mailAddress == '手机已存在') {
-        alert("该手机号码已经注册了");
-        window.location.href = 'cellPhoneinit.htm';
-        //将手机短信验证码移除
-        $.post("removecellCode.htm", "", function(data) {
-        });//删除手机验证码
-      } else if (data.mailAddress == '请输入正确的验证码') {
-        $('#btn_cellregs').attr('value', '免费注册');
-        $("#s_cellcode").html("短信校验码错误");
-        falg = true;
-      } else if (data.mailAddress == '注册成功') {
-        alert("恭喜你!注册成功");
-        $.post("removecellCode.htm", "", function(data) {
-          window.location.href = "login.htm";
-        });//删除手机验证码
-      }
-    });
-  }
-}
-</script>
-    <script>
-var timers = 60;
-$(function() {
-  timers = 120;
-  tipId = window.setInterval(timer, 1000);
-});
-//定时
-function timer() {
-  if (timers >= 0) {
-    timers--;
-  } else {
-    window.clearInterval(tipId);
-    $.post("removecellCode.htm", "", function(data) {
-    });
-  }
-}
-</script>
-
-</block>
-
-<block name="side"> </block>
-<block name="script">
-	<script type="text/javascript">
-    	$(document)
-	    	.ajaxStart(function(){
-	    		$("button:submit").addClass("log-in").attr("disabled", true);
-	    	})
-	    	.ajaxStop(function(){
-	    		$("button:submit").removeClass("log-in").attr("disabled", false);
-	    	});
-
-
-    	$("form").submit(function(){
-    		var self = $(this);
-    		$.post(self.attr("action"), self.serialize(), success, "json");
-    		return false;
-
-    		function success(data){
-    			if(data.status){
-    				window.location.href = data.url;
-    			} else {
-    				self.find(".Validform_checktip").text(data.info);
-    				//刷新验证码
-    				$(".reloadverify").click();
-    			}
-    		}
-    	});
-
-		$(function(){
-			var verifyimg = $(".verifyimg").attr("src");
-            $(".reloadverify").click(function(){
-                if( verifyimg.indexOf('?')>0){
-                    $(".verifyimg").attr("src", verifyimg+'&random='+Math.random());
-                }else{
-                    $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
-                }
-            });
-		});
-	</script>
-</block>
+	});
+</script> <!--content end--> </block>
 

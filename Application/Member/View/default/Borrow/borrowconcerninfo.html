@@ -1,15 +1,6 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@include file="/include/taglib.jsp" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-  <head> 
-    <jsp:include page="/include/head.jsp"></jsp:include>
-    <link href="css/css.css" rel="stylesheet" type="text/css" />
-		<link href="css/base.css" rel="stylesheet" type="text/css" />
-		<link href="css/inside.css" rel="stylesheet" type="text/css" />
-		<link id="skin" rel="stylesheet" href="css/jbox.css" />
-</head>
-<body>
+<block name="body">
+<extend name="Base/common"/>
+<block name="body">
 <%-- 引用头部公共部分 --%>
 <jsp:include page="/include/topref.jsp"></jsp:include>	
 <div class="nymain">
@@ -146,5 +137,4 @@ function del(obj){
      window.location.reload();
 }		     
 </script>
-</body>
-</html>
+</block>

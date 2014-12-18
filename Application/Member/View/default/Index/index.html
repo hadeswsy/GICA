@@ -1,119 +1,39 @@
 <block name="body">
 <extend name="Base/common"/>
 <block name="body">
-		 <!-- 引用头部公共部分  -->
-		<div class="nymain"><volist name="list" id="vo">
-			<div class="wdzh">
-				<div class="l_nav">
-					 <!-- 引用我的帐号主页左边栏  -->
-					<include file="Public/left"/>
-				</div>
-				<div class="r_main" style="border: none; margin: 0; width: 761px">
-					<div class="box box2" style="border-bottom: none;">
-						<h2 class="grisnd">
-							我的个人信息
-						</h2>
-						<div class="box-main">
-							<div style="overflow: hidden; ">
-								<div class="pic_info">
-									<div class="pic"><volist name="list3" id="vo">
-									<if condition="$vo.logo_url eq ''">
-											<img src="__STATIC__/rzg_images/default-img.jpg" width="128" height="128">
-											<elseif condition="$vo.logo_url  neq ''"/>
-											<img src="Uploads/{$vo.logo_url}" width="128" height="128">
-											</if>
-											</volist>
-											
-									</div>
-									<p>
-										<a href="javascript:void(0);" id="test2" class="shigong1">更换头像</a>
-										<!-- <a href="javascript:void(0);" id="test1">更换头像</a> --><!-- <input type="file"  name="file[]"><input  type="submit"  value="上传"> -->
-									</p>
-								</div>
-								<div class="xx_info">
-									<table width="100%" border="0" cellspacing="0" cellpadding="0">
-										<tr>
-											<th align="right">
-												用户名：
-											</th>
-											<td>
-												<span id="u">{:get_username()}</span>
-											</td>
-										</tr>
-										<tr>
-											<th align="right">
-												注册时间：
-											</th>
-											<td>
-												{$vo.reg_time|date='Y-m-d H:i:s',###}
-											</td>
-										</tr>
-										
-										<tr>
-											<th align="right">
-												会员积分：
-											</th>
-											<td>
-												<img src="__STATIC__/rzg_images/ico_r_1.gif"onclick=qvip();;;;;;;;;;;;style="cursor: pointer;" />
-											</td>
-										</tr>
-										
-<!-- 									<tr>
-											<th align="right">
-												个人统计：
-											</th>
-											<td>
-												<s:if test="#request.homeMap.borrowNum !=''">${homeMap.borrowNum}</s:if>
-												<s:else>0</s:else>
-												条借款记录，
-												<s:if test="#request.homeMap.investNum !=''">${homeMap.investNum}</s:if>
-												<s:else>0</s:else>
-												条投标记录
-											</td>
-										</tr> -->
-									</table>
-
-								</div>
-								<div class="hy_info">
-									<if condition="$vo.status eq 1">
-										<a href="{:U('Userinfo/userrenewalvip')}" class="vipbtn" target="_self">会员续费</a>
-									<elseif condition="$vo.status eq 0"/>
-										<a href="{:U('Userinfo/bevip')}" class="vipbtn" target="_self">成为会员</a>
-									</if>
-										<p style="padding-left: 13px">
-											会员到期：&nbsp;&nbsp;
-											<span>{$vo.time_limit|date='Y-m-d H:i:s',###}</span>
-										</p>
-										<p style="padding-left: 0px">
-											最后登陆时间：&nbsp;&nbsp;
-											<span style="color:#000">{$vo.last_login_time|date='Y-m-d H:i:s',###}</span>
-										</p>
-										<p style="padding-left: 0px">
-											最后登录IP：&nbsp;&nbsp;
-											<span style="color:#000">{:get_client_ip()}</span>
-										</p>
-										<div style="padding-left: 0px;overflow:hidden;width:500px;">
-											<p style="float:left;">所属的客服：</p>
-											<span style="float:left;color:#B70000;padding:0 0 0 18px;">{$vo.customer_name}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-											<span style="float:left;padding:0 5px;">QQ</span>
-											 <!-- WPA Button Begin  -->
-											<div style="float:left;margin-top:3px;">
-											<script charset="utf-8" type="text/javascript" src="http://wpa.b.qq.com/cgi/wpa.php?key=XzkzODAyNjA2MV8xNTkyMzRfNDAwMDkxMTgwNl8"></script>
-											</div>
-											 <!-- WPA Button End  -->
-										</div>
-										<p></p>
-								</div>
-								 <!-- 认证管理  -->
-								<div class="gr_rzgl"><volist name="list3" id="vs">
-									<table>
-										<tr>
-											<th align="right">
-												认证管理：
-											</th>
-											 <!-- 邮箱认证 -->
-											<td>
-											    <if condition="$vs.email_status eq 0">
+		  
+	<!--content start-->
+	<div class="zh_cont_out">
+    	<div class="zh_cont">
+            <h2><a href="{:U('Index')}">我的账户</a></h2>	
+            	<include file="Public/left"/>
+            <div class="zh_cont_r">
+           	  	<h3>当前位置>个人中心</h3>
+                <dl>
+                    	<dt><div class="img">
+                            <volist name="list3" id="vo">
+                                <if condition="$vo.logo_url eq ''">
+                                        <img src="__STATIC__/rzg_images/default-img.jpg" width="200" height="200">
+                                <elseif condition="$vo.logo_url  neq ''"/>
+                                        <img src="Uploads/User/{$vo.logo_url}" width="200" height="200" />
+                                </if>
+                             </volist><p>
+                             <a id="test2">更换图像</a></p>
+                             </div>
+                        </dt>
+                    <dd>
+                    	<p>用户名称：<span style="color:#66ccfb;">{:get_username()}</span></p>
+                    	<p>会员积分：<span>98分</span></p>
+                    	<p>注册时间：<span>{$vo.reg_time|date='Y-m-d',###}</span></p>
+                    	<p>所属客服：<span>客服-丫丫</span></p>
+                    	<p>登录时间：<span>{$vo.last_login_time|date='Y-m-d H:i:s',###}</span></p>
+                    	<p>站内信：<span>（<a href="#"><font color="#66ccfb;">5</font></a>）</span>条</p>
+                    	<p>登录IP:<span>{:get_client_ip()}</span></p>
+                    </dd>
+                </dl>
+                <ul class="ul01">
+                	<li>认证管理：</li>
+                    <li><if condition="$vs.email_status eq 0">
 													<a href="{:U('Userinfo/usermailbanding')}"><img
 															src="__STATIC__/rzg_images/img/h_yx_pic.jpg" title="邮箱未认证" />
 													</a>
@@ -121,13 +41,8 @@
 												     <a href="{:U('Userinfo/usermailbanding')}"><img
 															src="__STATIC__/rzg_images/img/l_yx_pic.jpg" title="邮箱已认证" />
 													</a>
-												</if>
-											</td>
-											<td>
-												&nbsp;&nbsp;
-											</td>
-											 <!-- 手机认证 -->
-											<td><if condition="$vs.phone_status eq 0">
+												</if></li>
+                    <li><if condition="$vs.phone_status eq 0">
 													<a href="{:U('Userinfo/userchangephone')}"><img
 															src="__STATIC__/rzg_images/img/h_sj_pic.jpg" title="手机未认证" />
 													</a>
@@ -135,13 +50,8 @@
 												     <a href="{:U('Userinfo/userchangephone')}"><img
 															src="__STATIC__/rzg_images/img/l_sj_pic.jpg" title="手机已认证" />
 													</a>
-												</if>
-											</td>
-											<td>
-												&nbsp;&nbsp;
-											</td>
-											 <!-- 身份证认证  -->
-											<td><if condition="$vs.id_status eq 0">
+												</if></li>
+                    <li><if condition="$vs.id_status eq 0">
 												<a href="{:U('Userinfo/userselfset')}">
 													<img src="__STATIC__/rzg_images/img/h_sfz_pic.jpg" title="身份证未认证" />
 												</a>
@@ -149,14 +59,8 @@
 												     <a href="{:U('Userinfo/userselfset')}">
 													<img src="__STATIC__/rzg_images/img/l_sfz_pic.jpg" title="身份证已认证" />
 												    </a>
-												</if>
-											</td>
-											<td>
-												&nbsp;&nbsp;
-											</td>
-
-											<!-- 银行卡认证 -->
-											<td><if condition="$vs.credit_status eq 0">
+												</if></li>
+                    <li><if condition="$vs.credit_status eq 0">
 												<a href="{:U('Userinfo/userbankset')}">
 													<img src="__STATIC__/rzg_images/img/h_yhk_pic.jpg" title="银行卡未认证" />
 												</a>
@@ -164,13 +68,8 @@
 												     <a href="{:U('Userinfo/userbankset')}">
 													<img src="__STATIC__/rzg_images/img/l_yhk_pic.jpg" title="银行卡已认证" />
 												    </a>
-												</if>
-											</td>
-											<td>
-												&nbsp;&nbsp;
-											</td>
-											 <!-- VIP认证 -->
-											<td><if condition="$vs.video_status eq 0">
+												</if></li>
+                    <li><if condition="$vs.video_status eq 0">
 												<a href="{:U('Userinfo/userrenewalvip')}">
 													<img src="__STATIC__/rzg_images/img/h_vip_pic.jpg" title="VIP未认证" />
 												</a>
@@ -178,345 +77,91 @@
 												     <a href="{:U('Userinfo/userrenewalvip')}">
 													<img src="__STATIC__/rzg_images/img/l_vip_pic.jpg" title="VIP已认证" />
 												    </a>
-												</if>
-											</td>
-											<td>
-												&nbsp;&nbsp;
-											</td>
-										</tr>
-									</table>
-
-								</volist>
-								</div>
-								<br />
-
-
-							</div>
-							<br/>
-							<div class="tips" style="width: 90%; margin: 0 auto">
-								<table width="100%" border="0" cellspacing="0" cellpadding="0">
-									<tr>
-										<th>
-											<img src="__STATIC__/rzg_images/022713_28.jpg" width="12" height="12" />
-											温馨提示：
-										</th>
-										<td>
-											未读站内信
-											<a href="javascript:void(0);" target="_self">（0）</a>封
-										</td>
-										<td>
-											本月待还款
-											<if condition="$vs.money_collect neq ''">
-											<a href="javascript:void(0);" target="_self">（{$vo.money_collect}）</a>个
-											<elseif condition="$vs.money_collect eq ''"/>
-											<a href="javascript:void(0);" target="_self">（无）</a>
-											</if>
-										</td>
-										<td>
-											本月待收款
-											<if condition="$vs.money_collect neq ''">
-											<a href="javascript:void(0);" target="_self">（{$vo.money_collect}）</a>个
-											<elseif condition="$vs.money_collect eq ''"/>
-											<a href="javascript:void(0);" target="_self">（无）</a>
-											</if>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											&nbsp;
-										</td>
-										<td>
-											逾期待还款
-											<if condition="$vs.money_collect neq ''">
-											<a href="javascript:void(0);" target="_self">（{$vo.money_collect}）</a>个
-											<elseif condition="$vs.money_collect eq ''"/>
-											<a href="javascript:void(0);" target="_self">（无）</a>
-											</if>
-										</td>
-										<td>
-											等待审核借款
-											<if condition="$vs.money_collect neq ''">
-											<a href="javascript:void(0);" target="_self">（{$vo.money_collect}）</a>个
-											<elseif condition="$vs.money_collect eq ''"/>
-											<a href="javascript:void(0);" target="_self">（无）</a>
-											</if>
-										</td>
-										<td>
-											上传资料
-											<if condition="$vs.money_collect neq ''">
-											<a href="javascript:void(0);" target="_self">（{$vo.money_collect}）</a>个
-											<elseif condition="$vs.money_collect eq ''"/>
-											<a href="javascript:void(0);" target="_self">（无）</a>
-											</if>
-										</td>
-									</tr>
-								</table>
-
-							</div>
-						</div>
-					</div>
-					<div class="box" style="border-bottom: none;">
-						<div class="box-main" style="padding-left: 70px;">
-							<div class="mid">
-								<ul>
-									<li>
-										<a href="{:U('Userinfo/userchagerwithdraw')}" target="_self"><img
-												src="__STATIC__/rzg_images/022713_32.jpg" width="32" height="35" /> </a>
-										<br />
-										<a href="{:U('Userinfo/userchagerwithdraw')}" target="_self">我要充值</a>
-									</li>
-									<li>
-										<a href="{:U('Userinfo/userchagerwithdraw')}" target="_self"><img
-												src="__STATIC__/rzg_images/ti_34.jpg" width="32" height="35" /> </a>
-										<br />
-										<a href="{:U('Userinfo/userchagerwithdraw')}" target="_self">我要提现</a>
-									</li>
-									<li>
-										<a href="{:U('Home/Finance/index')}" target="_self"><img
-												src="__STATIC__/rzg_images/022713_36.jpg" width="32" height="35" /> </a>
-										<br />
-										<a href="{:U('Home/Finance/index')}" target="_self">我要理财</a>
-									</li>
-									
-									<li>
-										<a href="#"><img
-												src="__STATIC__/rzg_images/022713_38.jpg" width="32" height="35" /> </a>
-										<br />
-										<a href="#">我要还款</a>
-									</li>
-									<li>
-										<a href="#" target="_self"><img
-												src="__STATIC__/rzg_images/022713_40.jpg" width="32" height="35" /> </a>
-										<br />
-										<a href="#" target="_self">待收款</a>
-									</li>
-									<li>
-										<a href="#"><img
-												src="__STATIC__/rzg_images/022713_42.jpg" width="32" height="35" /> </a>
-										<br />
-										<a href="#">资金流水</a>
-									</li>
-									<li>
-										<a href="{:U('Home/Borrow/index')}" target="_self"><img
-												src="__STATIC__/rzg_images/022713_44.jpg" width="32" height="35" /> </a>
-										<br />
-										<a href="{:U('Home/Borrow/index')}" target="_self">我要借款</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-					</volist>
-					<volist name="list" id="vo">
-					<div class="box">
-						<h2 class="otherh2">
-							账户详情：
-						</h2>
-						<div class="box-main">
-							<table border="0" cellpadding="0" cellspacing="0" class="zhtab">
-								<tr>
-									<th colspan="3" align="left">
-										账户总汇：
-									</th>
-								</tr>
-								<tr>
-									<td>
-										账户总额：￥
-										<if condition="$vo.account_money neq ''">
+												</if></li>
+                </ul>
+                
+                <ul class="ul02">
+                	<li class="ul02_li01">会员续费</li>
+                	<li><a href="{:U('Home/Borrow/index')}">我要借款</a></li>
+                	<li><a href="{:U('System/recharge')}">我要充值</a></li>
+                	<li>我要还款</li>
+                	<li><a href="{:U('System/withdrawdeposit')}">我要提现</a></li>
+                	<li>待收金额</li>
+                </ul>
+                <h4>账户详情：</h4>
+                <div class="zh_cont_r_bot">
+                	<p>账户总汇</p><volist name="list" id="vo">
+                    <ul>
+                    	<li>账户总额：￥<if condition="$vo.account_money neq ''">
 										{$vo.account_money}
 										<elseif condition="$vo.account_money eq 1"/>
 										0
-										</if>
-									</td>
-									<td>
-										可用余额：￥
-										<if condition="$vo.account_money neq ''">
+										</if></li>
+                    	<li>可用余额：￥<if condition="$vo.account_money neq ''">
 										{$vo.account_money}
 										<elseif condition="$vo.account_money eq 1"/>
 										0
-										</if>
-									</td>
-									<td>
-										冻结金额：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_freeze}
+										</if></li>
+                    	<!-- <li><p>冻结金额：￥</p><span>0.00</span></li>
+                    	<li><p>总收益：￥</p><span>0.00</span></li>
+                    	<li><p>利息收益：￥</p><span>0.00</span></li>
+                    	<li><p>其它收益：￥</p><span>0.00</span></li> -->
+                    </ul></volist>
+                </div>
+                
+                <div class="zh_cont_r_bot">
+                	<p>投资总汇</p><volist name="list2" id="list2">
+                    <ul>
+                    	<li><p>待收总额：￥<if condition="$vo.account_money neq ''">
+										{$list2['investor_capital']}
 										<elseif condition="$vo.account_money eq 1"/>
 										0
-										</if>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										总收益：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
+										</if></li>
+                    	<li><p>待收本金：￥<if condition="$vo.account_money neq ''">
+										{$list2['investor_capital']}
 										<elseif condition="$vo.account_money eq 1"/>
 										0
-										</if>
-									</td>
-									<td>
-										利息收益：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
+										</if></li>
+                    	<!-- <li><p>冻结金额：￥</p><span>0.00</span></li>
+                    	<li><p>总收益：￥</p><span>0.00</span></li>
+                    	<li><p>利息收益：￥</p><span>0.00</span></li>
+                    	<li><p>其它收益：￥</p><span>0.00</span></li> -->
+                    </ul></volist>
+                </div>
+                
+                <div class="zh_cont_r_bot">
+                	<p>借款总汇</p><volist name="borrow_money" id="bm">
+                    <ul>
+                    	<li>待还总额：￥<if condition="$vo.account_money neq ''">
+										{$bm.borrow_money}
 										<elseif condition="$vo.account_money eq 1"/>
 										0
-										</if>
-									</td>
-									<td>
-										其他收益：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
+										</if></li>
+                    	<li>待还本金：￥<if condition="$vo.account_money neq ''">
+										{$bm.borrow_money}
 										<elseif condition="$vo.account_money eq 1"/>
 										0
-										</if>
-									</td>
-								</tr>
-								<tr>
-									<th colspan="3" align="left">
-										投资总汇：
-									</th>
-								</tr>
-								<tr>
-									<td>
-										已收总额：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-									<td>
-										已收本金：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-									<td>
-										已收利息：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										待收总额：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-									<td>
-										待收本金：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.back_money}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-									<td>
-										待收利息：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-								</tr>
-								<tr>
-									<th colspan="3" align="left">
-										借款总汇：
-									</th>
-								</tr>
-								<tr>
-									<td>
-										已还总额：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-									<td>
-										已还本金：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-									<td>
-										已还利息：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										待还总额：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-									<td>
-										待还本金：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-									<td>
-										待还利息：￥
-										<if condition="$vo.account_money neq ''">
-										{$vo.money_collect}
-										<elseif condition="$vo.account_money eq 1"/>
-										0
-										</if>
-									</td>
-								</tr>
+										</if></li>
+                    	<!-- <li><p>冻结金额：</p><span>￥0.00</span></li>
+                    	<li><p>总收益：</p><span>￥0.00</span></li>
+                    	<li><p>利息收益：</p><span>￥0.00</span></li>
+                    	<li><p>其它收益：</p><span>￥0.00</span></li> -->
+                    </ul></volist>
+                </div>
+                
+                <div class="zh_cont_r_bot last">
+                	 <!--<p>借款总汇</p>
+                    <ul>
+                    	<li><p>最近还款日：</p><span>无</span></li>
+                    	<li><p>最近还款金额：￥</p><span>0.00</span></li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+	<!--content end-->
+    
 								
-								
-								<tr>
-									<th colspan="3" align="left">
-										最近还款：
-									</th>
-								</tr>
-								<tr>
-									<td>
-										最近还款日：
-										<s:if test="#request.repayMap.minRepayDate == ''">无</s:if>
-									</td>
-									<td>
-										最近还款金额：
-										<s:if test="#request.repayMap.totalSum != ''">
-											<fmt:formatNumber value="${repayMap.totalSum}" type="number"
-												pattern="￥0.00" />
-										</s:if>
-										<s:else>0.00</s:else>
-									</td>
-									<td>
-										&nbsp;
-									</td>
-
-								</tr>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-		</volist>
-		</div>
 		
 		 <!-- 引用底部公共部分  -->
 		<script type="text/javascript" src="script/jquery.shove-1.0.js"></script>
@@ -550,9 +195,7 @@ success: function(data) {
 </script>
 <script>
 	$('#test2').on('click', function(){
-		// layer.msg('正在施工，无法更换');
-
-
+		// layer.msg('正在施工，无法更换')
     $.layer({
         type: 1,
         title: [

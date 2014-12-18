@@ -15,22 +15,30 @@ class IndexController extends MemberController {
   //       $this->display();
 
         is_login() || $this->error('您还没有登录，请先登录！', U('Home/User/login'));
-        $uid        =   is_login();//获取当前用户UID
-
+        $uid  =   is_login();//获取当前用户UID
+       
         $listMember = M('member');
         $condition['gica_member.uid'] =$uid;
         $list =$listMember->join('RIGHT JOIN gica_ucenter_member ON gica_member.uid = gica_ucenter_member.id' )->join('RIGHT JOIN gica_z_member_money ON gica_member.uid = gica_z_member_money.uid' )->where($condition)->select();
 
-        // $list2 =$listMember->join('LEFT JOIN gica_z_member_money ON gica_member.uid = gica_z_member_money.uid' )->where($condition)->select();
+        //投资总额查询
+        $lists2_uid['investor_uid'] =$uid;
+        $lists2    = D('z_borrow_investor')->field('sum(investor_capital)investor_capital')->where($lists2_uid)->order('investor_capital desc')->group('investor_uid')->select();
+        $lists3_uid['borrow_uid'] =$uid;
+        $lists3    = D('z_borrow_info')->field('sum(borrow_money)borrow_money')->where($lists3_uid)->group('borrow_uid')->select();
+        
 
         $m = M('ucenter_member');//用户头像
         $condition1['gica_ucenter_member.id'] =$uid;
         $m=$m->where($condition1)->select();
         
         $this->assign('list', $list);
-        $this->assign('list2', $list2);
+        $this->assign('list2', $lists2);
+        $this->assign('borrow_money', $lists3);
         $this->assign('list3', $m);
-        var_dump($list );
+
+        //var_dump($lists2);
+        // var_dump($lists2);
         $this->display();
     }
     //文件信息写入数据库
@@ -59,11 +67,12 @@ class IndexController extends MemberController {
     }
      //上传
     public function upload(){
+        $uid=is_login(); 
         $config=array(
             'maxSize'=>100*1024*1024*1024,
             'mimes'=>array(),
-            'rootPath'=>'./Uploads/',
-            'ext'=>array(),
+            'rootPath'=>'./Uploads/User/',
+            'savePath'=>$uid.'/',
             'autoSub'=>true,
         );
         $upload = new \Think\Upload($config);// 实例化上传类

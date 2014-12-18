@@ -1,80 +1,35 @@
-<div class="box">
-	<div class="til">
-		<h2>
-			个人中心
-		</h2>
-	</div>
-	<ul>
-		<li id="li_1">
-			<a href="{:U('Member/index')}" >我的主页</a>
-		</li>
-		<li id="li_16">
-			<a href="{:U('Userinfo/userselfset')}">基本认证</a>
-		</li>
-		<li id="li_3">
-			<a href="javascript:void(0);" class="shigong">融资认证</a>
-		</li>
-		
-		<li id="li_5">
-			<a href="javascript:void(0);" class="shigong">安全设置</a>
-		</li>
-        <li id="li_121"><a href="javascript:void(0);" class="shigong">安全中心</a></li>
-		<li id="li_2">
-			<a href="javascript:void(0);" class="shigong">充值提现</a>
-		</li>
-		<li id="li_4">
-			<a href="javascript:void(0);" class="shigong">站内信</a>
-		</li>
-		<li id="li_6">
-			<a href="{:U('Friends/friends')}" class="shigong">好友管理</a>
-		</li>
-<li id="li_123"><a href="javascript:void(0);" class="shigong">通知设置</a></li>
-	</ul>
-</div>
-<div class="box">
-	<div class="til">
-		<h2>
-			借款管理
-		</h2>
-		
-		
-	</div>
-	<ul>
-		<li id="li_7" class="fir">
-			<a href="javascript:void(0);" class="shigong">还款管理</a>
-		</li>
-		<li id="li_8">
-			<a href="javascript:void(0);" class="shigong">已发布的借款</a>
-		</li>
-		<li id="li_9">
-			<a href="javascript:void(0);" class="shigong">贷款统计</a>
-		</li>
-	</ul>
-</div>
-<div class="box">
-	<div class="til">
-		<h2>
-			理财管理
-		</h2>
-	</div>
-	<ul>
-		<li id="li_10">
-			<a href="javascript:void(0);" class="shigong">我的投标</a>
-		</li>
-		<li id="li_11">
-			<a href="javascript:void(0);" class="shigong">我关注的借款</a>
-		</li>
-		<li id="li_12">
-			<a href="javascript:void(0);" class="shigong">理财统计</a>
-		</li>
-		<li id="li_13"><a href="javascript:void(0);" class="shigong">自动投标</a></li>
-	</ul>
-</div>
-
-      <div class="box">
-      <div class="til"><h2>债权管理</h2>
-      </div>
-      <ul><li id="li_14"><a href="javascript:void(0);" class="shigong">债权转让</a></li>
-			<li id="li_15"><a href="javascript:void(0);" class="shigong">债权竞拍</a></li>
-</ul>
-</div>
+<!--zh_cont_l-->
+            <div class="zh_cont_l">
+                <ul>
+                    <li class="current"><a class="current" href="{:U('Member/Index')}">个人中心</a></li>
+                    <li><a href="{:U('Userinfo/userselfset')}">基本认证</a></li>
+                   <!--  <li>融资认证</li> -->
+                </ul>  
+                
+                <ul>
+                    <li><a href="{:U('Userinfo/usersaftyset')}">安全设置</a></li>
+                    <li><a href="{:U('Userinfo/userchagerwithdraw')}">充值提现</a></li>
+                    <li><a href="{:U('Friends/friends')}">好友管理</a></li>
+                    <li><a href="{:U('System/usermailindex')}">通知管理</a></li>
+                </ul> 
+                 
+                <ul>
+                    <li>借款管理</li>
+                    <li><a href="{:U('Invest/borrowmanager')}">我的借款</a></li>
+                    <li><a href="{:U('Finance/borrowloanstatis')}">借款统计</a></li>
+                    <li><a href="{:U('Invest/borrowmanager')}">还款明细</a></li>
+                </ul>  
+                <ul> 
+                    <li>投资管理</li>
+                    <li><a href="{:U('Invest/investindex')}">我的投资</a></li>
+                    <li><a href="{:U('Finance/financestatis')}">投标统计</a></li>
+                    <li>关注投标</li>
+                    <!-- <li>自动投标</li> -->
+                </ul>  
+                
+<!--                 <ul class="ul_last">
+                    <li>债权管理</li>
+                    <li>我的债权</li>
+                </ul>  --> 
+            </div>
+ <!--zh_cont_r-->

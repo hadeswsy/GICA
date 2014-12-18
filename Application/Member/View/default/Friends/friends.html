@@ -1,16 +1,13 @@
 <block name="body">
 <extend name="Base/common"/>
 <block name="body">
-
-		<div class="nymain">
-			<div class="wdzh">
-				<div class="l_nav">
-					<div class="box">
-						<!-- 引用我的帐号主页左边栏 -->
-					<include file="Public/left"/>
-					</div>
-				</div>
-				<div class="r_main">
+		<!--content start-->
+	<div class="zh_cont_out">
+    	<div class="zh_cont">
+            <h2><a href="{:U('Index')}">我的账户</a></h2>	
+            	<include file="Public/left"/>
+            <div class="zh_cont_r">
+            	<div class="r_main">
 					<div class="tabtil">
 						<ul>
 							<a href="friendManagerInit.htm">
@@ -67,9 +64,8 @@
 								<h4>
 									复制链接发给QQ/MSN上的好友
 								</h4>
-								<span id="testcopy">http://www.baidu.com</span>&nbsp;&nbsp;&nbsp;<a href="#" id="copy"><font color="green">复制</font></a>
+								<span id="testcopy">http://www.ghcf.com</span>&nbsp;&nbsp;&nbsp;<a href="#" id="copy"><font color="green">复制</font></a>
 								
-								<p>1234</p>
 								<!-- <textarea class="txta_1" name="contents" id="contents">中国工合实业集团旗下 网贷平台【ghcf】，P2P理财首选平台。综合年化收益18%以上，100%本息安全保障，50元超低门槛，是草根、家庭的理财专属通道！你也赶快来投资，别被银行榨取我们的存款利息！进入平台先注册:${url}reg.htm?param=${userId}</textarea>
 								<div class="fzfx_an">
 									<a href="javascript:void(0);" onclick=
@@ -126,81 +122,13 @@
 					</div>
 
 				</div>
-			</div>
-		</div>
-		</div>
-		<input id="attid" type="hidden" value="${user.id }" />
-		<!-- 引用底部公共部分 -->
-		<jsp:include page="/include/footer.jsp"></jsp:include>
-
-		<script type="text/javascript" src="script/jquery-1.7.1.min.js"></script>
-		<script type="text/javascript" src="script/jquery.shove-1.0.js"></script>
-		<script type="text/javascript" src="script/nav-zh.js"></script>
-		<script type="text/javascript" src="common/date/calendar.js"></script>
-		<script type="text/javascript" src="css/popom.js"></script>
-
-
-		<script>
-	function sendMail() {
-		param["paramMap.emails"] = $("#emails").val();
-		param["paramMap.name"] = $("#name").val();
-		param["paramMap.title"] = $("#title").val();
-		param["paramMap.content"] = $("#content").val();
-		$.shovePost("sendGroupEmails.htm", param, function(data) {
-			if (data == 1) {
-				$("#s_tip").html("请输入好友EMAIL");
-				return;
-			} else if (data == 7) {
-				$("#s_tip").html("邮箱格式错误");
-				return;
-			} else if (data == 2) {
-				$("#s_tip").html("请输入您的姓名");
-				return;
-			} else if (data == 5) {
-				$("#s_tip").html("姓名长度为2-20个字符");
-				return;
-			} else if (data == 3) {
-				$("#s_tip").html("请输入邮件标题");
-				return;
-			} else if (data == 6) {
-				$("#s_tip").html("邮件标题长度为5-30个字符");
-				return;
-			} else if (data == 4) {
-				$("#s_tip").html("请输入邮件内容");
-				return;
-			} else {//邮件发送成功，
-					alert("邮件发送成功");
-					window.location.href = "friendManagerInit.htm";
-				}
-			});
-	}
-</script>
-<script>
-$("#copy").click(function(event){
-	$("#testcopy").clone(true).appendTo("p");
-});
-</script>
-
-		<script type="text/javascript">
-	function jsCopy() {
-		var e = document.getElementById("contents");//对象是content 
-		e.select(); //选择对象 
-		document.execCommand("Copy"); //执行浏览器复制命令
-		
-		
-	}
-</script>
-
-		<script>
-	$(function() {
-		//样式选中
-		$("#zh_hover").attr('class', 'nav_first');
-		$("#zh_hover div").removeClass('none');
-		$('#li_6').addClass('on');
-		init();
-	});
-</script>
-
+            	
+            </div>
+            </div>
+        </div>
+    </div>
+	<!--content end-->		
 </block>
-</block >
+
+
 

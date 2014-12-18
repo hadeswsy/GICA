@@ -1,0 +1,112 @@
+<block name="body">
+<extend name="Base/common"/>
+	<!--content start-->
+	<div class="zh_cont_out">
+    	<div class="zh_cont">
+            <h2>我的账户</h2>	
+            
+            <!--zh_cont_l-->
+              <include file="Public/left"/>
+            <!--zh_cont_r-->
+            <div class="zh_cont_r">
+            
+            	<!--安全设置-->
+           	  	<div class="tab">
+                    <h3>当前位置>安全设置</h3>
+                    <p style="background:#d3cbc7;width:968px;height:1px;"></p>
+                    <ul class="aqset_tabH">
+                    	<li class="cur">登录密码</li>
+                    	<li>交易密码</li>
+                    	<li>邮箱验证</li>
+                    	<li>手机验证</li>
+                    	<li>银行卡</li>
+                    	<li>身份证</li>
+                    </ul>
+                    <div class="aqset_tabC_out">
+                        <!--身份证验证-->
+                        <div class="aqset_tabC" style="display:none">
+                            <p class="sfz">保障您的账户资金安全，通过认证后可参与投资，不可修改</p>	</div>
+                        <!--银行卡验证-->
+                        <div class="aqset_tabC" style="display:none">
+                            <dl class="yhk" style="margin-top:65px;">
+                                <dt>真实姓名：</dt>
+                                <dd></dd>
+                            </dl>
+                            <dl class="yhk">
+                                <dt>开户行：</dt>
+                                <dd><input type="text" class="yhk_txt"><span>输入您的开户银行名称</span></dd>
+                            </dl>
+                            <dl class="yhk">
+                                <dt>支行：</dt>
+                                <dd><input type="text" class="yhk_txt"><span>输入您的开户支行</span></dd>
+                            </dl>
+                            <dl class="yhk">
+                                <dt>卡号：</dt>
+                                <dd><input type="text" class="yhk_txt"><span>输入您的卡号 </span></dd>
+                            </dl>
+                            <input type="button" class="yhk_btn" value="提交">
+                        </div>
+                        <!--手机验证-->
+                        <div class="aqset_tabC" style="display:none;">
+                            <dl class="phone" style="margin-top:65px;">
+                                <dt>手机绑定：</dt>
+                                <dd><input type="text" class="phone_txt"></dd>
+                            </dl>
+                            <dl class="phone">
+                                <dt>手机变更：</dt>
+                                <dd><input type="text" class="phone_txt"><input type="button" class="phone_btn" value="验证码发送"></dd>
+                            </dl>
+                            <dl class="phone">
+                                <dt>手机验证码：</dt>
+                                <dd><input type="text" class="phone_txt" style="width:150px;height:36px;"><span>输入您的手机验证码 </span></dd>
+                            </dl>
+                            <input type="button" class="yhk_btn" value="提交">
+                        </div>
+                        <!--邮箱验证-->
+                        <div class="aqset_tabC" style="display:none;">
+                            <p class="aqset_tabC_head">我们在加班</p>
+                            <dl class="email">
+                                <dt>邮件地址：</dt>
+                                <dd><input type="text" class="email_txt"><input type="button" class="email_btn" value="修改邮箱"></dd>
+                            </dl>                        
+                        </div>
+                        <!--交易密码-->
+                        <div class="aqset_tabC" style="display:none;">
+                            <dl class="jymm" style="margin-top:65px;">
+                                <dt>交易密码：</dt>
+                                <dd><input type="text" class="jymm_txt"></dd>
+                            </dl>
+                            <dl class="jymm">
+                                <dt>确认密码：</dt>
+                                <dd><input type="text" class="jymm_txt"></dd>
+                            </dl>
+                            <input type="button" class="jymm_btn" value="提交">
+                        </div>
+                    	<!--登录密码-->
+                        <div class="aqset_tabC">
+                            <p class="aqset_tabC_head2">上次登录时间：<span>2014-11-22</span></p>
+                            <dl class="dlmm">
+                                <dt>原始密码：</dt>
+                                <dd><input type="text" class="dlmm_txt"></dd>
+                            </dl>
+                            <dl class="dlmm">
+                                <dt>新密码：</dt>
+                                <dd><input type="text" class="dlmm_txt"></dd>
+                            </dl>
+                            <dl class="dlmm">
+                                <dt>确认密码：</dt>
+                                <dd><input type="text" class="dlmm_txt"></dd>
+                            </dl>
+                            <input type="button" class="dlmm_btn" value="提交">
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<!--content end-->
+
+
+</block>

@@ -1,21 +1,17 @@
 <block name="body">
 <extend name="Base/common"/>
 <block name="body">
-		<!-- 引用头部公共部分 -->
-		<jsp:include page="/include/topref.jsp"></jsp:include>
-		<div class="nymain">
-			<div class="wdzh">
-				<div class="l_nav">
-					<div class="box">
-						<!-- 引用我的帐号主页左边栏 -->
-						<include file="Public/left"/>
-					</div>
-				</div>
-				<div class="r_main">
+		<!--content start-->
+	<div class="zh_cont_out">
+    	<div class="zh_cont">
+            <h2><a href="{:U('Index')}">我的账户</a></h2>	
+            	<include file="Public/left"/>
+	            <div class="zh_cont_r">
+	            <div class="r_main">
 					<div class="tabtil">
 						<ul>
-							<li class="on tipshang">
-								资金记录
+							<li class="on">
+								<a href="{:U('Userinfo/userchagerwithdraw')}">资金记录</a>
 							</li>
 							<li>
 								<!-- <a href="{:U('Userinfo/userwithdrawrice')}">充值</a> -->
@@ -28,11 +24,102 @@
 						</ul>
 					</div>
 					<div class="box" id="zjjl">
-					</div>
+					<div class="boxmain2"><volist name="list" id="vo">
+							<div class="tabmain">
+								<div class="biaoge">
+									<table width="100%" border="0" cellspacing="0" cellpadding="0">
+										<tbody><tr>
+											<th>
+												账户总额
+											</th>
+											<th>
+												可用余额
+											</th>
+											<th>
+												冻结金额
+											</th>
+										</tr>
+										<tr>
+											<td align="center">
+												￥{$vo.account_money}</td>
+											<td align="center">
+												￥{$vo.account_money}</td>
+											<td align="center">
+												￥{$vo.money_freeze}</td>
+										</tr>
+									</tbody></table>
 
+								</div>
+							</div></volist>
+						</div>
+						<h2 class="otherh2x">
+							资金记录
+						</h2>
+						<div class="boxmain2">
+							<div class="srh">
+								查询时间 起始时间：
+								<input id="startTime" type="text" class="inp140" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:'readOnly'})">
+								结束时间：
+								<input id="endTime" type="text" class="inp140" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',readOnly:'readOnly'})">
+								类型:
+								<select name="momeyType" id="momeyType" class="inp80">
+							    <option value="">--请选择--</option>
+							    <option value="-1">国付宝</option>
+							    <option value="804">扣除VIP会费</option>
+							    <option value="251">好友邀请奖励</option>
+							    <option value="-1">手工充值</option>
+							    <option value="653">冻结投标金额</option>
+							    <option value="101">借款成功</option>
+							    <option value="601">扣除借款管理费</option>
+							    <option value="654">扣除投标冻结金额</option>
+							    <option value="804">申请VIP会员</option>
+							    <option value="-1">好友邀请奖励</option>
+							    <option value="-1">冻结提现金额</option>
+							    <option value="-1">提现成功</option>
+							    <option value="-1">奖励充值</option>
+							    <option value="801">扣除短信服务费</option>
+							    <option value="502">手动扣费</option>
+							    <option value="151">投资收到还款</option>
+							    <option value="156">收到逾期罚息</option>
+							    <option value="604">扣除还款金额</option>
+							    <option value="603">扣除逾期罚息</option>
+							    <option value="-1">取消提现</option>
+							    <option value="-1">提现失败</option>
+							    <option value="602">冻结秒还借款费</option>
+							    <option value="105">解冻秒还借款费</option>
+							</select>
+
+							<a href="javascript:void(0)" class="cxbtn" onclick="fundRecordList();;">查询</a>
+														</div>
+														<div class="biaoge" id="fundRecord">
+							    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+									  <tbody><tr>
+									    <th>序号</th>
+									    <th>时间</th>
+									    <th>操作类型</th>
+									    <th>备注</th>
+									    <th>收入</th>
+									    <th>支出</th>
+									    <th>可用余额</th>
+									    <th>冻结金额</th>
+									    <th>待收金额</th>
+									    <th>总金额</th>
+									  </tr>
+									  
+									  <tr><td colspan="11" align="center">暂无信息</td></tr>
+									  </tbody></table>
+								
+								<div class="page">
+								<p>
+								</p>
+							</div> </div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
+            </div>
+        </div>
+    </div>
+	<!--content end-->
 		<!-- 引用底部公共部分 -->
 		<jsp:include page="/include/footer.jsp"></jsp:include>
 		<script type="text/javascript" src="/script/jquery-1.7.1.min.js"></script>

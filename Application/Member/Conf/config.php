@@ -56,6 +56,10 @@ return array(
         '__CSS__'    => __ROOT__ . '/Public/' . MODULE_NAME . '/css',
         '__JS__'     => __ROOT__ . '/Public/' . MODULE_NAME . '/js',
     ),
+    /* 前台错误页面模板 */
+    'TMPL_ACTION_ERROR'     =>  'Home@Public:error', // 默认错误跳转对应的模板文件
+    'TMPL_ACTION_SUCCESS'   =>  'Home@Public:success', // 默认成功跳转对应的模板文件
+    'TMPL_EXCEPTION_FILE'   =>  'Home@Public:exception',// 异常页面的模板文件
 
     /* SESSION 和 COOKIE 配置 */
     'SESSION_PREFIX' => 'gica_home', //session前缀

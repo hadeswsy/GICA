@@ -381,7 +381,7 @@ height:0px;
 .wdzh .r_main .box .box-main .tips table { line-height: 28px; }
 .wdzh .r_main .box .box-main .tips table tr th { font-weight: normal; color: #ef5e0b; }
 .wdzh .r_main .box .box-main .tips table tr td a { color: #fe0000; vertical-align: baseline; }
-.nymain .wdzh .r_main .box .otherh2 { font-size: 14px; font-weight: bold; color: #b70000; padding-left: 36px; text-align: left;line-height:30px; }
+.box .otherh2 { font-size: 14px; font-weight: bold; color: #b70000; padding-left: 36px; text-align: left;line-height:30px; }
 .wdzh .r_main .box .box-main .mid { overflow: hidden; height: 100%; *display:inline;}
 .wdzh .r_main .box .box-main .mid ul li { line-height: 42px; color: #37729e; text-align: center; float: left; width: 84px; margin-left: 5px; }
 .wdzh .r_main .box .box-main .mid ul li a { color: #333333; }
@@ -389,7 +389,34 @@ height:0px;
 .wdzh .r_main .box .box-main .zhtab { line-height: 28px; width:95%; margin:0 auto }
 .wdzh .r_main .box .box-main .zhtab tr th { background-color: #f9f9f9; padding-left: 42px; border: 1px solid #ccc; }
 .wdzh .r_main .box .box-main .zhtab tr td { padding-left: 42px; border: 1px solid #ccc; }
+------------
+.r_main .box .box-main .pic_info { float: left; width: 140px; padding-right: 30px; padding-left: 20px; display: inline; }
+.r_main .box .box-main .pic_info p { line-height: 28px; text-align: center; }
+.r_main .box .box-main .pic_info p a { color: #b70000; text-decoration: underline; }
+.r_main .box .box-main .pic_info p a:hover { text-decoration: none; }
 
+.r_main .box .box-main .pic_info .pic { padding: 5px; height: 128px; width: 128px; border: 1px solid #ccc; }
+.r_main .box .box-main .pic_info .ipaddress { line-height: 22px; color: #666; }
+
+.r_main .box .box-main .xx_info { float: left; width: 295px; display: inline; }
+.r_main .box .box-main .xx_info table { line-height: 30px; color: #333; }
+.r_main .box .box-main .xx_info table tr td { padding-left: 18px; }
+.r_main .box .box-main .xx_info table th { font-weight: normal; color: #666; }
+
+.r_main .box .box-main .hy_info { float: left; width: 275px; line-height: 32px; color: #666; display: inline; }
+.r_main .box .box-main .hy_info p span { color: #ad0907; }
+.r_main .box .box-main .tips { color: #333; background-color: #fcfdff; margin-top: 16px; padding-right: 10px; padding-left: 10px; border: 1px solid #e2ebf2; padding-top: 5px; padding-bottom: 5px; margin-top:10px }
+.r_main .box .box-main .tips table { line-height: 28px; }
+.r_main .box .box-main .tips table tr th { font-weight: normal; color: #ef5e0b; }
+.r_main .box .box-main .tips table tr td a { color: #fe0000; vertical-align: baseline; }
+.r_main .box .otherh2 { font-size: 14px; font-weight: bold; color: #b70000; padding-left: 36px; text-align: left;line-height:30px; }
+.r_main .box .box-main .mid { overflow: hidden; height: 100%; *display:inline;}
+.r_main .box .box-main .mid ul li { line-height: 42px; color: #37729e; text-align: center; float: left; width: 84px; margin-left: 5px; }
+.r_main .box .box-main .mid ul li a { color: #333333; }
+.r_main .box .box-main .mid ul li a:hover { color: #b70000; }
+.r_main .box .box-main .zhtab { line-height: 28px; width:95%; margin:0 auto }
+.r_main .box .box-main .zhtab tr th { background-color: #f9f9f9; padding-left: 42px; border: 1px solid #ccc; }
+.r_main .box .box-main .zhtab tr td { padding-left: 42px; border: 1px solid #ccc; }
 /*-------页底--------*/
 .footz{ background:#f9f9f9 url(../rzg_images/footbg_18.jpg) repeat-x; width:100%; margin-top:12px; overflow:hidden}
 
@@ -469,7 +496,7 @@ height:0px;
 .nymain .bigbox .sqdk .l-nav ul .on a { color: #FFF; background: url(../rzg_images/sqdk_0333.png) no-repeat; line-height: 44px; font-size:18px}
 .nymain .bigbox .sqdk .l-nav ul .on a span{ font-size:14px; font-family:Arial, Helvetica, sans-serif; text-transform:uppercase; color:#e38f8f; }
 .nymain .bigbox .sqdk .l-nav ul .on a:hover { color: #FFF; background: url(../rzg_images/sqdk_0333.png) no-repeat ; line-height: 44px; }
-.nymain .bigbox .sqdk .r-main { float: left; width: 779px; border: 1px solid #eee; }
+.r-main { float: left; width: 779px; border: 1px solid #eee; }
 .nymain .bigbox .sqdk .r-main .til01 { background: url(../rzg_images/sqdk_03.jpg) repeat-x; height:40px; overflow: hidden; height: 100%; }
 .nymain .bigbox .sqdk .r-main .til01 li{ height:40px; float:left; padding:0 15px; line-height:38px; cursor:pointer; }
 
@@ -606,44 +633,44 @@ height:0px;
 .nymain .ifbox1 .boxmain .qrtb_ .tbmain .tbcz .tbtab table tr .tishi { color: #999; }
 
 /*我的账户内页*/
-.nymain .wdzh .r_main .tabtil { height: 38px; background: url(../rzg_images/neiye1_133.jpg) repeat-x; }
-.nymain .wdzh .r_main .tabtil ul li { font-family: "微软雅黑"; font-size: 12px; line-height: 38px; color: #333; float: left;padding:0 20px; cursor: pointer; }
-.nymain .wdzh .r_main .tabtil ul li:hover{ text-decoration:underline}
-.nymain .wdzh .r_main .tabtil ul .on { line-height: 38px; color: #FFF; background-image: url(../rzg_images/neiye1_1334.jpg); }
-.nymain .wdzh .r_main .tabbox .tabmain { padding-top: 15px; padding-right: 15px; padding-bottom: 25px; padding-left: 15px; border-right-width: 1px; border-left-width: 1px; border-right-style: solid; border-left-style: solid; border-right-color: #d1d9de; border-left-color: #d1d9de; }
-.nymain .wdzh .r_main .box  .biaoge { margin-top: 20px; }
-.nymain .wdzh .r_main .box  .biaoge table a { color: #136dad; }
-.nymain .wdzh .r_main .box  .biaoge table a:hover { color: #00315d; }
+.tabtil { height: 38px; background: url(../rzg_images/neiye1_133.jpg) repeat-x; }
+.tabtil ul li { font-family: "微软雅黑"; font-size: 12px; line-height: 38px; color: #333; float: left;padding:0 20px; cursor: pointer; }
+.tabtil ul li:hover{ text-decoration:underline}
+.tabtil ul .on { line-height: 38px; color: #FFF; background-image: url(../rzg_images/neiye1_1334.jpg); }
+.tabbox .tabmain { padding-top: 15px; padding-right: 15px; padding-bottom: 25px; padding-left: 15px; border-right-width: 1px; border-left-width: 1px; border-right-style: solid; border-left-style: solid; border-right-color: #d1d9de; border-left-color: #d1d9de; }
+.box  .biaoge { margin-top: 20px; }
+.box  .biaoge table a { color: #136dad; }
+.box  .biaoge table a:hover { color: #00315d; }
 
-.nymain .wdzh .r_main .box  .biaoge table { line-height: 28px; }
-.nymain .wdzh .r_main .box  .biaoge table tr td { border: 1px solid #ddd; }
-.nymain .wdzh .r_main .box  .biaoge table tr th { background-color: #f9f9f9; border: 1px solid #ddd; font-weight: normal; }
-.nymain .wdzh .r_main .box .otherh2x { font-family: "微软雅黑"; font-size: 12px; color: #333; padding-left: 15px; text-align: left; }
-.nymain .wdzh .r_main .box .boxmain2 { padding-top: 20px; padding-bottom: 25px; }
-.nymain .wdzh .r_main .box .boxmain2 .srh { line-height: 32px; margin-bottom: 12px; }
-.nymain .wdzh .r_main .box .boxmain2 .srh input{ vertical-align: middle}
-.nymain .wdzh .r_main .box .boxmain2 .srh a{ vertical-align: middle}
+.box  .biaoge table { line-height: 28px; }
+.box  .biaoge table tr td { border: 1px solid #ddd; }
+.box  .biaoge table tr th { background-color: #f9f9f9; border: 1px solid #ddd; font-weight: normal; }
+.box .otherh2x { font-family: "微软雅黑"; font-size: 12px; color: #333; padding-left: 15px; text-align: left; }
+.box .boxmain2 { padding-top: 20px; padding-bottom: 25px; }
+.box .boxmain2 .srh { line-height: 32px; margin-bottom: 12px; }
+.box .boxmain2 .srh input{ vertical-align: middle}
+.box .boxmain2 .srh a{ vertical-align: middle}
 .cxbtn { line-height: 18px; color: #333; background-image: url(../rzg_images/030213_3.jpg); background-repeat: repeat-x; text-align: center; display: inline-block; height: 18px; width: 58px; border: 1px solid #ccc; }
 .cxbtn:hover { color: #000; }
-.nymain .wdzh .r_main .box .boxmain2 .tips { line-height: 24px; background: #fffcf7; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; margin-bottom: 15px; }
-.nymain .wdzh .r_main .box .boxmain2 .biaoge2 { margin-top: 15px; margin-bottom: 15px; padding-right: 20px; padding-left: 20px; }
-.nymain .wdzh .r_main .box .boxmain2 .biaoge2 table { line-height: 32px; }
-.nymain .wdzh .r_main .box .boxmain2 .biaoge2 table tr td strong { font-weight: normal; color: #ea0000; }
-.nymain .wdzh .r_main .box .boxmain2 .bank { background-color: #fffcf3; padding-top: 20px; padding-right: 50px; padding-bottom: 20px; padding-left: 50px; border: 2px solid #f7efd5; overflow: hidden; height: 100%; }
-.nymain .wdzh .r_main .box .boxmain2 .bank ul li { float: left; margin-right: 10px; margin-bottom: 15px; width: 170px; }
-.nymain .wdzh .r_main .box .boxmain2 .btn { text-align: center; padding-top: 15px; padding-bottom: 15px; margin-top: 15px; margin-bottom: 20px; }
-.nymain .wdzh .r_main .box .boxmain2 .tips2 { color: #999; margin-bottom: 10px; padding-bottom: 5px; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: #ccc; line-height:24px}
-.nymain .wdzh .r_main .biaoge2 table .txt { color: #999; line-height: 24px; }
-.nymain .wdzh .r_main .box .boxmain2 .biaoge2 table .tx { padding-top: 10px; padding-bottom: 10px; }
-.nymain .wdzh .r_main .box .boxmain2 .biaoge2 table tr th { padding-top: 10px; font-size: 12px; color: #b70000; padding-left: 15px; }
-.nymain .wdzh .r_main .box .boxmain2 .biaoge table strong { font-weight: normal; color: #ea0000; }
-.nymain .wdzh .r_main .box .boxmain2 .friend { overflow: hidden; height: auto; }
-.nymain .wdzh .r_main .box .boxmain2 .friend li { float: left; width: 80px; margin-right: 20px; margin-left: 20px; text-align: center; line-height: 20px; margin-bottom: 30px; }
-.nymain .wdzh .r_main .box .boxmain2 .friend li a img { padding: 3px; border: 1px solid #ddd; }
-.nymain .wdzh .r_main .box .boxmain2 .friend li .name { color: #136dad; }
-.nymain .wdzh .r_main .box .boxmain2 .friend li .name:hover { color: #00315d; }
-.nymain .wdzh .r_main .box .boxmain2 .friend li .sc { color: #999; }
-.nymain .wdzh .r_main .box .boxmain2 .friend li .sc:hover { color: #666; }
+.box .boxmain2 .tips { line-height: 24px; background: #fffcf7; padding-top: 5px; padding-right: 20px; padding-bottom: 5px; padding-left: 20px; margin-bottom: 15px; }
+.box .boxmain2 .biaoge2 { margin-top: 15px; margin-bottom: 15px; padding-right: 20px; padding-left: 20px; }
+.box .boxmain2 .biaoge2 table { line-height: 32px; }
+.box .boxmain2 .biaoge2 table tr td strong { font-weight: normal; color: #ea0000; }
+.box .boxmain2 .bank { background-color: #fffcf3; padding-top: 20px; padding-right: 50px; padding-bottom: 20px; padding-left: 50px; border: 2px solid #f7efd5; overflow: hidden; height: 100%; }
+.box .boxmain2 .bank ul li { float: left; margin-right: 10px; margin-bottom: 15px; width: 170px; }
+.box .boxmain2 .btn { text-align: center; padding-top: 15px; padding-bottom: 15px; margin-top: 15px; margin-bottom: 20px; }
+.box .boxmain2 .tips2 { color: #999; margin-bottom: 10px; padding-bottom: 5px; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: #ccc; line-height:24px}
+.biaoge2 table .txt { color: #999; line-height: 24px; }
+.box .boxmain2 .biaoge2 table .tx { padding-top: 10px; padding-bottom: 10px; }
+.box .boxmain2 .biaoge2 table tr th { padding-top: 10px; font-size: 12px; color: #b70000; padding-left: 15px; }
+.box .boxmain2 .biaoge table strong { font-weight: normal; color: #ea0000; }
+.box .boxmain2 .friend { overflow: hidden; height: auto; }
+.box .boxmain2 .friend li { float: left; width: 80px; margin-right: 20px; margin-left: 20px; text-align: center; line-height: 20px; margin-bottom: 30px; }
+.box .boxmain2 .friend li a img { padding: 3px; border: 1px solid #ddd; }
+.box .boxmain2 .friend li .name { color: #136dad; }
+.box .boxmain2 .friend li .name:hover { color: #00315d; }
+.box .boxmain2 .friend li .sc { color: #999; }
+.box .boxmain2 .friend li .sc:hover { color: #666; }
 
 /*债权转让*/
 .zqbanner { width: 1000px; margin-right: auto; margin-left: auto; }
@@ -712,7 +739,7 @@ height:0px;
 
 /*3.4样式调整*/
 .main .main_l .anli .anli_main ul { overflow: hidden; height: 100%; }
-.nymain .wdzh .r_main .box .box-main .mid { overflow: hidden; height: 15%; }
+.box .box-main .mid { overflow: hidden; height: 15%; }
 .nymain .lcmain .lcmain_r .lbox .lboxmain ul { overflow: hidden; height: 100%; }
 .nymain .ifbox1 .boxmain .reninfo .topbg span { display: none; }
 .nymain .ifbox1 .boxmain .reninfo .botbg span { display: none; }
@@ -724,13 +751,13 @@ height:0px;
 
 /*好友详情*/
 
-.nymain .wdzh .r_main .box .box-main div .pic_info .guanzhu { text-align: center; }
-.nymain .wdzh .r_main .box .box-main div .pic_info .znx { text-align: center; }
-.nymain .wdzh .r_main .box .box-main div .pic_info .znx a { color: #999; }
-.nymain .wdzh .r_main .box .box-main div .pic_info .znx a:hover { text-decoration: underline; }
-.nymain .wdzh .r_main .box .box-main div .pic_info .guanzhu { line-height: 36px; background-image: url(../rzg_images/neiye2_22.jpg); background-repeat: no-repeat; background-position: 30px center; padding-left: 25px; }
-.nymain .wdzh .r_main .box .box-main div .pic_info .guanzhu a { color: #b70000; }
-.nymain .wdzh .r_main .box .box-main div .pic_info .guanzhu a:hover { color: #b70000; }
+.box .box-main div .pic_info .guanzhu { text-align: center; }
+.box .box-main div .pic_info .znx { text-align: center; }
+.box .box-main div .pic_info .znx a { color: #999; }
+.box .box-main div .pic_info .znx a:hover { text-decoration: underline; }
+.box .box-main div .pic_info .guanzhu { line-height: 36px; background-image: url(../rzg_images/neiye2_22.jpg); background-repeat: no-repeat; background-position: 30px center; padding-left: 25px; }
+.box .box-main div .pic_info .guanzhu a { color: #b70000; }
+.box .box-main div .pic_info .guanzhu a:hover { color: #b70000; }
 .nymain .lcmain .lcmain_l .lctab .gzfirend { overflow: hidden; height: auto; }
 .nymain .lcmain .lcmain_l .lctab .gzfirend ul li { line-height: 30px; text-align: center; float: left; width: 80px; margin: 20px; }
 .nymain .lcmain .lcmain_l .lctab .gzfirend ul li a { color: #b70000; }
@@ -812,21 +839,21 @@ height:0px;
 height:85px;}
 
 /*4.11我的账户内页*/
-.nymain .wdzh .r_main .box .boxmain2 { padding-top: 20px; padding-right: 10px; padding-bottom: 25px; padding-left: 10px; position: relative; }
+.box .boxmain2 { padding-top: 20px; padding-right: 10px; padding-bottom: 25px; padding-left: 10px; position: relative; }
 /*---------*/
  
 /*债权转让弹出框*/
-.nymain .wdzh .r_main .box .boxmain2 .tcbox { background-color: #cccccc; padding: 8px; width: 496px; position: absolute; left: 125px; top: 72px; z-index: 999; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain { background-color: #FFF; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain { padding-top: 5px; padding-right: 18px; padding-bottom: 30px; padding-left: 18px; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain h3 { font-size: 14px; line-height: 42px; font-weight: normal; color: #136dad; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain .ysctab table { line-height: 28px; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain .ysctab table tr td { border: 1px solid #ddd; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain .ysctab table tr th { font-weight: normal; background-color: #f9f9f9; border: 1px solid #ddd; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain .ysctab table tr .pic { padding-top: 5px; padding-bottom: 5px; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain .xzzl { background-image: url(../rzg_images/neiye1_333.jpg); background-repeat: repeat-x; background-position: left top; padding-top: 10px; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain .xzzl table { line-height: 30px; }
-.nymain .wdzh .r_main .box .boxmain2 .tcbox .tcmain .xzzl table tr th { font-size: 12px; font-weight: normal; color: #136dad; }
+.box .boxmain2 .tcbox { background-color: #cccccc; padding: 8px; width: 496px; position: absolute; left: 125px; top: 72px; z-index: 999; }
+.box .boxmain2 .tcbox .tcmain { background-color: #FFF; }
+.box .boxmain2 .tcbox .tcmain { padding-top: 5px; padding-right: 18px; padding-bottom: 30px; padding-left: 18px; }
+.box .boxmain2 .tcbox .tcmain h3 { font-size: 14px; line-height: 42px; font-weight: normal; color: #136dad; }
+.box .boxmain2 .tcbox .tcmain .ysctab table { line-height: 28px; }
+.box .boxmain2 .tcbox .tcmain .ysctab table tr td { border: 1px solid #ddd; }
+.box .boxmain2 .tcbox .tcmain .ysctab table tr th { font-weight: normal; background-color: #f9f9f9; border: 1px solid #ddd; }
+.box .boxmain2 .tcbox .tcmain .ysctab table tr .pic { padding-top: 5px; padding-bottom: 5px; }
+.box .boxmain2 .tcbox .tcmain .xzzl { background-image: url(../rzg_images/neiye1_333.jpg); background-repeat: repeat-x; background-position: left top; padding-top: 10px; }
+.box .boxmain2 .tcbox .tcmain .xzzl table { line-height: 30px; }
+.box .boxmain2 .tcbox .tcmain .xzzl table tr th { font-size: 12px; font-weight: normal; color: #136dad; }
 /*4.15上传资料弹出框*/
 .nymain .bigbox .sqdk .r-main .rmainbox .tcbox .tcmain p { line-height: 24px; padding-bottom: 10px; border-bottom-width: 1px; border-bottom-style: dotted; border-bottom-color: #ddd; }
 .nymain .bigbox .sqdk .r-main .rmainbox .tcbox .tcmain p strong { color: #888; }
@@ -868,7 +895,7 @@ height:85px;}
 .inews-gg{ clear:both; border:#ddd 1px solid; height:174px; background:#ffffff; margin-top:0px}
 .ins-title{ clear:both; height:32px; line-height:32px; background:url(../rzg_images/index_17.jpg) repeat-x}
 .ins-title h3{ float:left; background:url(../rzg_images/index_16.jpg) no-repeat; width:98px; font-size:14px;color:#fff;}
-.more{ float: right;padding-right:10px}
+
 .more a{ color:#999; font-size:12px; font-family:"宋体"}
 .more a:hover{ color:#b70000; }
 .inews-gg ul{ clear:both; margin:0 12px; padding-top:5px}

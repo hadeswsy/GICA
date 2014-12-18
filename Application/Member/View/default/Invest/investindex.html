@@ -1,31 +1,20 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-	<head>
-		<jsp:include page="/include/head.jsp"></jsp:include>
-		<link rel="stylesheet" href="css/style.css" type="text/css"></link>
-		<link rel="stylesheet" href="css/base.css" type="text/css"></link>
-		<link href="css/inside.css" rel="stylesheet" type="text/css" />
-		<link id="skin" rel="stylesheet" href="css/jbox/Gray/jbox.css" />
-	</head>
-	<body>
-		<!-- <引用头部公共部分 -->
-		<jsp:include page="/include/topref.jsp"></jsp:include>
-		<div class="nymain">
-			<div class="wdzh">
-				<div class="l_nav">
-					<div class="box">
-						<!-- 引用我的帐号主页左边栏 -->
-						<include file="Public/left"/>
-					</div>
-				</div>
-				<div class="r_main">
+<block name="body">
+<extend name="Base/common"/>
+<block name="body">
+		<!--content start-->
+	<div class="zh_cont_out">
+    	<div class="zh_cont">
+            <h2><a href="{:U('Index')}">我的账户</a></h2>	
+            	<include file="Public/left"/>
+            <div class="zh_cont_r">
+            	<div class="r_main">
 					<div class="tabtil">
 						<ul>
 							<li id="lab_1" class="on"
 								onclick="jumpUrl('homeBorrowInvestList.htm');">
-								成功借出
+								我的投资
 							</li>
-							<li id="lab_2" onclick="jumpUrl('homeBorrowTenderInList.htm');">
+<!-- 							<li id="lab_2" onclick="jumpUrl('homeBorrowTenderInList.htm');">
 								招标中的借款
 							</li>
 							<li id="lab_3" onclick="jumpUrl('homeBorrowRecycleList.htm');">
@@ -36,12 +25,12 @@
 							</li>
 							<li id="lab_5" onclick="jumpUrl('homeBorrowBackAcountList.htm');">
 								回账查询
-							</li>
+							</li> -->
 						</ul>
 					</div>
 					<div class="box">
 						<div class="boxmain2">
-							<%--<div class="srh">
+							<!-- <div class="srh">
 								<form action="homeBorrowInvestList.htm" id="searchForm">
 									<input type="hidden" name="type" value="${paramMap.type}" />
 									<input type="hidden" name="curPage" id="pageNum" />
@@ -63,7 +52,7 @@
 										type="text" maxlength="200" class="inp90" />
 									<a href="javascript:void(0);" id="search" class="scbtn"> 搜索</a>
 								</form>
-							</div>--%>
+							</div> -->
 							<div class="biaoge">
 								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 									<tr>
@@ -76,27 +65,15 @@
 										<th>
 											期数
 										</th>
-										<%-- <th>
-											还款方式
-										</th> --%>
 										<th>
-											应收本金
+											还款方式
+										</th>
+										<th>
+											投资本金
 										</th>
 										<th>
 											年利率
-										</th>
-										<th>
-											应收利息
-										</th>
-										<th>
-											期限
-										</th>
-										<th>
-											发布时间
-										</th>
-										<th>
-											还款时间
-										</th>
+										</th>										
 										<th>
 											借款类型
 										</th>
@@ -104,59 +81,41 @@
 											协议书
 										</th>
 									</tr>
-									<s:if test="pageBean.page==null || pageBean.page.size==0">
+<!-- 									<s:if test="pageBean.page==null || pageBean.page.size==0">
 										<tr align="center">
 											<td colspan="10">
 												暂无数据
 											</td>
 										</tr>
-									</s:if>
+									</s:if> -->
 									<s:else>
-										<s:iterator value="pageBean.page" var="bean">
+										<s:iterator value="pageBean.page" var="bean"><volist name="list" id="vo">
 											<tr>
 												<td align="center">
-													${bean.username}
+													{$vo.borrow_uid}
 												</td>
 												<td align="center">
-													<a href="financeDetail.htm?id=${bean.borrowId}"
-														target="_blank">${bean.borrowTitle}</a>
+													<a href="{:U('Home/Borrow/detail?id='.$vo['id'])}"target="_blank">{$vo.borrow_name}</a>
 												</td>
-												<td align="center">
-													${bean.repayPeriod}
+												<td align="center">{$vo.borrow_duration}个月
 												</td>
-												<td align="center">
-                                                   ${bean.forpayPrincipal }
+												<td align="center">暂无
 												</td>
-												<td align="center">
-													${bean.annualRate}%
+												<td align="center">暂无
 												</td>
-												<td align="center">
-													${bean.forpayInterest}
-												</td>
-												<td align="center">
-													${bean.deadline}
-													<s:if test="%{#bean.isDayThe ==1}">个月</s:if>
-													<s:else>天</s:else>
-												</td>
-												<td align="center">
-													${bean.publishTime}
-												</td>
-												<td align="center">
-													${bean.repayDate}
-												</td>
-												<td align="center">
-													<s:if test="%{#bean.borrowWay ==1}">净值借款</s:if>
+												<td align="center">暂无
+													<!-- <s:if test="%{#bean.borrowWay ==1}">净值借款</s:if>
 													<s:if test="%{#bean.borrowWay ==2}">秒还借款</s:if>
 													<s:if test="%{#bean.borrowWay ==3}"> 普通借款</s:if>
 													<s:if test="%{#bean.borrowWay ==4}"> 实地考察借款</s:if>
-													<s:if test="%{#bean.borrowWay ==5}">  机构担保借款</s:if>
+													<s:if test="%{#bean.borrowWay ==5}">  机构担保借款</s:if> -->
+												</td>
+												<td align="center">暂无
 												</td>
 												<td align="center">
-													<a
-														href="protocol.htm?typeId=1&&borrowId=${bean.borrowId }&&investId=${bean.investId }&&styles=1"
-														target="_blank">查看协议</a>
+													<a href="{:U('Invest/borrowprotocol')}" target="_blank">查看协议</a>
 												</td>
-											</tr>
+											</tr></volist>
 										</s:iterator>
 									</s:else>
 								</table>
@@ -171,42 +130,8 @@
 					</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<!-- 引用底部公共部分 -->
-		<jsp:include page="/include/footer.jsp"></jsp:include>
-		<script type="text/javascript" src="script/nav-zh.js"></script>
-		<script type="text/javascript" src="css/popom.js"></script>
-		<script type="text/javascript" src="script/jquery.shove-1.0.js"></script>
-		<script language="javascript" type="text/javascript"
-			src="My97DatePicker/WdatePicker.js"></script>
-		<script type="text/javascript"
-			src="script/jbox/jquery.jBox-2.3.min.js"></script>
-		<script type="text/javascript" src="script/jbox/jquery.jBox-zh-CN.js"></script>
-		<script>
-	$(function() {
-		$("#jumpPage").click(function() {	
-			var curPage = $("#curPageText").val();
-			if (isNaN(curPage)) {
-				alert("输入格式不正确!");
-				return;
-			}
-			$("#pageNum").val(curPage);
-			$("#searchForm").submit();
-		});
-	});
-
-	function jumpUrl(obj) {
-		window.location.href = obj;
-	}
-	function showAgree(investId, borrowId) {
-		var url = "protocol.htm?typeId=1&&borrowId=" + borrowId + "&&investId="
-				+ investId + "&&styles=1";
-		jQuery.jBox.open("post:" + url, "查看协议书", 700, 400, {
-			buttons : {}
-		});
-
-	}
-</script>
-	</body>
-</html>
+            </div>	
+        </div>
+    </div>
+	<!--content end-->		
+</block>

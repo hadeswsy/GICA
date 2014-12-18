@@ -1,77 +1,39 @@
-<!--header-->
-<div class="topline_box1">
-	<div class="top_line">
-		<div class="top_phone">
-			4888-888-888
-		</div>
-			<div class="topline_right">
-				<ul>
-					<li>
-						<a href="javascript:void(0);" class="xsrw"></a>
-					</li>
-					<li>
-						<a href="javascript:void(0);" class=" tipxia">策划中的活动</a>
-					</li>
-					<!--<li>
-						<a href="newguide.htm" class="xsrw">新手任务</a>
-					</li>-->
-					<li id="gfq">
-						官方群
-						<div id="rzggf" class="list" style="display: none;">
-							<a>官A群:888888888</a>
-							<a>官B群:666666666</a>
-						</div>
-					</li>
+<!--header start-->
+<div class="header_out">
+	<div class="header">
+		<ul>
+			<li class="weibo"><div></div><a href="">官方微博</a></li>
+			<li class="weixin"><div></div><a href="">官方微信</a></li>
+			<li class="call"><div></div><a href="">客户热线：400-123-4567</a></li>
+		</ul>
+		<if condition="is_login()">
+		<p>
+			<a href="{:U('Member/Index/index')}"class="zc">{:get_username()}[个人中心]</a>&nbsp;|&nbsp;<a href="{:U('Home/User/logout')}"class="dl">安全退出</a>
+		</p>
+		<else/>
+		<p>
+			<a href="{:U('Home/User/register')}" class="zc btn">免费注册</a> |&nbsp;<a
+				href="{:U('Home/User/login')}" class="dl btn">立即登录</a>
+		</p>
+		</if>
 
-					<if condition="is_login()">
-					            <li><a href="{:U('Member/Index/index')}">{:get_username()}</a></li>
-                                <li><a href="{:U('Home/User/profile')}">修改密码</a></li>
-                                <li><a href="{:U('Home/User/logout')}">退出</a></li>
-					<else/>
-
-					<li>
-						<a href="{:U('Home/User/register')}" class="mfzc">免费注册</a>
-					</li>
-					<li>
-						<a href="{:U('Home/User/login')}" class="ljdl"> 立即登录</a>
-					</li>
-					</if>
-				</ul>
-			</div>
 	</div>
 </div>
-<div class="header">
-	<div class="logo">
-		<a href=""><img src="/Public/static/rzg_images/img/logo.gif"/>
-		</a>
-	</div>
-	<div class="nav">
-	    <think:nav name="nav">
-	    <eq name="nav.pid" value="0">
-            <a href="{$nav.url|get_nav_url}" target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>">{$nav.title}</a>
-		</eq>
-		</think:nav>
-	</div>
+<!--header end-->
+
+<!--nav start-->
+<div class="nav">
+	<h1>
+		<a href="index.html"><img src="__PUBLIC__/Home/images/logo.png"
+			width="171" height="48" /></a>
+	</h1>
+	<ul class="nav_wrap">
+		<li style="width: 40px;"><a href="{:U('Home/Index/index')}"
+			class="current">首页</a></li>
+		<li><a href="{:U('Home/Borrow/index')}">我要融资</a></li>
+		<li><a href="{:U('Home/Finance/index')}">我要投资</a></li>
+		<li><a href="{:U('Member/Index/index')}">我的账户</a></li>
+		<li><a href="{:U('Home/Newhelp/borrowhelp')}">新手指引</a></li>
+	</ul>
 </div>
-
-<!-- header end-->、
-<script>
-	//alert("dafdadfafasfasfa");
-	//$(function() {
-	//alert("123464677");
-
-	//  alert("1234567");
-	//  $("#gfq").mouseover(function(){
-	//  alert("123456789flajfalfj");
-	//	 $("#rzggf").show();
-	// });
-	//  $("#gfq").mouseout(function(){
-	//  alert("123456789flajfalfj");
-	// $("#rzggf").hide();
-	// });
-    //Q群号滑动效果
-	$("#gfq").hover(function() {
-		$("#rzggf").slideToggle();
-	});
-	//});
-</script>
+<!--nav end-->

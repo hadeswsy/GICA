@@ -1,13 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html>
-	<head> 
-		<link href="css/css.css" rel="stylesheet" type="text/css" />
-		<link href="css/base.css" rel="stylesheet" type="text/css" />
-		<link href="css/inside.css" rel="stylesheet" type="text/css" />
-		<link id="skin" rel="stylesheet" href="css/jbox.css" />
-		<jsp:include page="/include/head.jsp"></jsp:include>
-	</head>
-	<body>
+<block name="body">
+<extend name="Base/common"/>
+<block name="body">
 		<!-- 引用头部公共部分 -->
 		<jsp:include page="/include/topref.jsp"></jsp:include>
 		<form id="form" action="addBorrow.htm" method="post">
@@ -444,6 +437,12 @@
 										</tr>
 									</table>
 								</div>
+								
+								
+								
+								
+								
+								
 							</div>
 						</div>
 					</div>
@@ -718,5 +717,5 @@
 		return dirName;
 	}
 </script>
-	</body>
-</html>
+</block>
+</block>

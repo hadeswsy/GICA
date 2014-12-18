@@ -1,662 +1,219 @@
 <block name="body">
 <extend name="Base/common"/>
 <block name="body">
-		<!-- 引用头部公共部分 -->
-		<jsp:include page="/include/topref.jsp"></jsp:include>
-		<input type="hidden" id="idStr" value="${idStr}" />
-		<s:if test="%{#request.list !=null && #request.list.size()>0}">
-			<s:iterator value="#request.list" id="bean">
-				<input type="hidden" id="userID" value="${bean.userId}" />
-			</s:iterator>
-		</s:if>
-		<div class="nymain">
-		<volist name="list3" id="vb">
-			<div class="ifbox1">
-				<h2>
-					<span><a href="javascript:void(0);" id="sendmail">发送站内信</a>
-						<a href="javascript:void(0);" id="reportuser">举报此人</a> </span>标的详情
-				</h2>
-				<div class="boxmain">
-					<div class="pic-info">
-						<div class="tx">
-							<shove:img src="${borrowDetailMap.imgPath}"
-								defaulImg="images/default-img.jpg" width="128px;"
-								height="128px;">
-							</shove:img>
-						</div>
-						<div class="guanzhu">
-							<!-- Baidu Button BEGIN -->
-							<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
-								<a class="bds_qzone"></a>
-								<a class="bds_tsina"></a>
-								<a class="bds_tqq"></a>
-								<a class="bds_renren"></a>
-								<a class="bds_t163"></a>
-								<span class="bds_more">更多</span>
-								<a class="shareCount"></a>
-							</div>
-							<script type="text/javascript" id="bdshare_js"
-								data="type=tools&amp;uid=6638061"></script>
-							<script type="text/javascript" id="bdshell_js"></script>
-							<script type="text/javascript">
-	document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion="
-			+ Math.ceil(new Date() / 3600000)
-</script>
-							 <!-- Baidu Button END  -->
-						</div>
-						<p>
-							<a id="focusonBorrow" href="javascript:void(0);">关注此借款</a>
-						</p>
-					</div>
-					<div class="xqbox">
-						<h3>
-							<s:property value="#request.borrowDetailMap.borrowTitle"
-								default="---" />
-							&nbsp;&nbsp;&nbsp; (
-							<s:property value="#request.borrowWay" default="---" />{$vb.borrow_name}
-							)
-						</h3>
-						<div class="xqboxmain">
-							<div class="xqtop">
-								<div class="money">
-									<p>
-										借款金额：
-										<strong>￥{$vb.borrow_money}元
-										</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;借款目的：${borrowDetailMap.purpose
-										}
-									</p>
-									<p>
-										借款年利率：{$vb.borrow_interest_rate}%
-										借款期限：
-										<span>{$vb.borrow_duration}</span>
-									</p>
-								</div>
-								<div class="tbbtn">
-									<s:if test="#session.DEMO==2">
-										<s:if test="%{#request.wStatus != ''}">
-											<img src="__STATIC__/rzg_images/tubiao4.png" width="97" height="31" />&nbsp;
-	        </s:if>
-										<s:elseif test="%{#request.borrowDetailMap.borrowStatus == 1}">
-											<img src="__STATIC__/rzg_images/neiye2_15.jpg" width="97" height="31" />&nbsp;
-	        </s:elseif>
-										<s:elseif test="%{#request.borrowDetailMap.borrowStatus == 2}">
-											<a href="javascript:void(0);" id="invest"><img
-													src="__STATIC__/rzg_images/neiye2_07.jpg" width="124" height="50" /> </a>
-										</s:elseif>
-										<s:elseif test="%{#request.borrowDetailMap.borrowStatus == 3}">
-											<img src="__STATIC__/rzg_images/neiye2_16.jpg" width="97" height="31" />&nbsp;
-	        </s:elseif>
-										<s:elseif test="%{#request.borrowDetailMap.borrowStatus == 4}">
-											<img src="__STATIC__/rzg_images/neiye1_636.jpg" width="97" height="31" />&nbsp;
-	        </s:elseif>
-										<s:elseif test="%{#request.borrowDetailMap.borrowStatus == 5}">
-											<img src="__STATIC__/rzg_images/neiye1_637.jpg" width="97" height="31" />&nbsp;
-      		  </s:elseif>
-										<s:else>
-											<img src="__STATIC__/rzg_images/neiye2_18.jpg" width="97" height="31" />&nbsp;
-		        </s:else>
-									</s:if>
-									<s:else>
-										<s:if test="%{#request.borrowDetailMap.borrowStatus == 1}">
-											<img src="__STATIC__/rzg_images/neiye2_15.jpg" width="97" height="31" />&nbsp;
-      	  	</s:if>
-										<s:elseif test="%{#request.borrowDetailMap.borrowStatus == 2}">
-											<a href="javascript:void(0);" id="invest"><img
-													src="__STATIC__/rzg_images/neiye2_07.jpg" width="124" height="50" /> </a>
-										</s:elseif>
-										<s:elseif test="%{#request.borrowDetailMap.borrowStatus == 3}">
-											<img src="__STATIC__/rzg_images/neiye2_16.jpg" width="97" height="31" />&nbsp;
-	        </s:elseif>
-										<s:elseif test="%{#request.borrowDetailMap.borrowStatus == 4}">
-											<img src="__STATIC__/rzg_images/neiye1_636.jpg" width="97" height="31" />&nbsp;
-	        </s:elseif>
-										<s:elseif test="%{#request.borrowDetailMap.borrowStatus == 5}">
-											<img src="__STATIC__/rzg_images/neiye1_637.jpg" width="97" height="31" />&nbsp;
-      		  </s:elseif>
-										<s:else>
-											<img src="__STATIC__/rzg_images/neiye2_18.jpg" width="97" height="31" />&nbsp;
-		        </s:else>
-									</s:else>
+<!--content start-->
+	<div class="bdxq_cont_out">
+    	<div class="bdxq_cont">
+        	<h2>标的详情</h2>
+            <dl>
+                <dt>
+                    <div class="header"></div>
+                    <ul>
+                        <li>用户名称：<span>小红</span></li>
+                        <li>注册时间：<span>2014-11-22</span></li>
+                        <li>最后登录：<span>2014-11-28</span></li>
+                        <li>居住地：<span>深圳市</span></li>
+                    </ul>
+                    <a href="#">关注此人</a><a href="#">关注此借款</a>
+                </dt>
+                <dd>
+                    <ul><volist name="list3" id="vb">
+                        <li><h3>{$vb.borrow_name}</h3></li>
+                        <li><h3>（机构担保借款）</h3><input type="button" class="btn"></li>
+                        <li>借款金额：<span style="color:#ef681f;">￥{$vb.borrow_money}元</span></li>
+                        <li>借款目的：<span>短期周转</span></li>
+                        <li>借款年利率：<span>{$vb.borrow_interest_rate}%</span>（月利率：<span>1.50%</span>）</li>
+                        <li>借款期限：<span>{$vb.borrow_duration}月</span></li>
+                        <li>还差：<span>￥900,000.00</span></li>
+                        <li><strong>投标进度：</strong><span class="out"><span class="in"></span></span><span class="data">60%</span></li>
+                        <li style="color:#ef681f;">还款方式：<span>一次性还款</span></li>
+                        <li>交易类型：<span>线下交易</span></li>
+                        <li>最小投标金额：<span>￥50.00</span></li>
+                        <li>最大投标金额：<span>不限</span></li>
+                        <li>总投标数：<span style="margin-right:20px;">0</span>   浏览量：<span>0</span></li>
+                        </volist>                             
+                    </ul>
+                    <p>投标<span>10000.0</span>元，年利率：<span>15.0%</span>，期限<span>1个月</span>，可获得利息收益：<span>￥150.00元</span></p>
+                    <p><input type="button" class="share" style="background:url(../../../../../Public/Home/images/share.png) no-repeat 0 0"><input type="button" class="share" style="background:url(../../../../../Public/Home/images/share.png) no-repeat -22px 0"><input type="button" class="share" style="background:url(../../../../../Public/Home/images/share.png) no-repeat -44px 0"><a href="#" class="more">更多</a></p>
+                </dd>
+            </dl>
+        	
+            <!--项目详情-->
+           <div class="xmxq_out">
+               <div class="xmxq">
+                    <h3>项目详情</h3>
+                    <p>借款人用户名：<span>小红</span></p>
+                    <p>借款标类型：<span>其他个人经营性贷款</span></p>
+                    <p>借款人资质：<span>女，45岁，福建厦门人，已婚</span></p>
+                    <p>历史沿革：<span>公司成立于2008年10月，注册资本1000万元</span></p>
+                    <p>主营业务：<span>工程和技术研究和试验发展；耐火陶瓷制品及其他耐火材料制造；其他通用设备制造业</span></p>
+                    <p>经营概况：<span>优质企业</span></p>
+                    <p>年营业收入：<span>3000万元</span></p>
+                    <p>借款用途：<span>购买原材料</span></p>
+                    <p>还款来源：<span>营业收入</span></p>
+                </div>
+                <div class="jyjl">
+                    <h4>工合交易信用记录</h4>
+                    <p>发布借款笔数：<span>3</span>笔</p>
+                    <p>累计逾期次数：<span>0</span></p>
+                    <p>成功借入笔数：<span>0</span>笔</p>
+                    <p>当前是否有逾期：<span>无</span></p>
+                    <p>累计借入总额：<span>￥0.00</span></p>
+                    <p>当前逾期待还金额：<span>0.00</span></p>
+                </div>
+            </div>
+        	
+            <!--审核-->
+            
+            <ul class="title">
+                <li class="current">审核记录</li>
+                <li>还款计划</li>
+                <li>信息披露</li>
+            </ul>
+            <div class="sh">
+                <div class="tab">
+                    <ul class="tit">
+                        <li>审核项目</li>
+                        <li>状态</li>
+                        <li>通过时间</li>
+                    </ul>
+                
+                    <ul class="con">
+                        <li>身份认证</li>
+                        <li style="background:url(../../../../../Public/Home/images/pass_Bg.png) no-repeat center center">pass</li>
+                        <li>2014-11-22</li>
+                    </ul>
+                    <ul class="con">
+                        <li>工作认证</li>
+                        <li style="background:url(../../../../../Public/Home/images/pass_Bg.png) no-repeat center center">pass</li>
+                        <li>2014-11-22</li>
+                    </ul>
+                    <ul class="con">
+                        <li>居住地认证</li>
+                        <li style="background:url(../../../../../Public/Home/images/pass_Bg.png) no-repeat center center">pass</li>
+                        <li>2014-11-22</li>
+                    </ul>
+                    <ul class="con">
+                        <li>信用报告</li>
+                        <li style="background:url(../../../../../Public/Home/images/pass_Bg.png) no-repeat center center">pass</li>
+                        <li>2014-11-22</li>
+                    </ul>
+                    <ul class="con">
+                        <li>房产</li>
+                        <li style="background:url(../../../../../Public/Home/images/pass_Bg.png) no-repeat center center">pass</li>
+                        <li>2014-11-22</li>
+                    </ul>
+                    <ul class="con">
+                        <li>购车</li>
+                        <li style="background:url(../../../../../Public/Home/images/pass_Bg.png) no-repeat center center">pass</li>
+                        <li>2014-11-22</li>
+                    </ul>
+                    <ul class="con">
+                        <li>其它资料</li>
+                        <li style="background:url(../../../../../Public/Home/images/pass_Bg.png) no-repeat center center">pass</li>
+                        <li>2014-11-22</li>
+                    </ul>
+                </div>
+                <div class="tab" style="display:none">
+                <p>此为计划表，还款日期以实际日期为准</p>
+                <ul class="tit2">
+                    <li>期次</li>
+                    <li>还款日期</li>
+                    <li>还款金额</li>
+                    <li>应还本金</li>
+                    <li>应还利息</li>
+                </ul>
+                <ul class="con2">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            </div>
+            
+                
+            
+            
+            
+            <!--标的详情-->
+            <div class="bdxq">
+            	<h4>标的详情</h4>
+                <p>借款人是四川南充人，来深十多年，已婚并育有两个孩子，名下还有多套物业，资金实力强。<br/>客户做实体经营起家，经营电子显示屏多年，上下游客户出名，还款能力强。其抵押物现值90万元。</p>
+            </div>
+            
+            <!--留言板-->
+            <div class="message">
+            	<h4>留言板</h4>
+                <p>字数1~120之间</p>
+                <textarea class="txta"></textarea>
+                <div class="submit">
+                	<a class="sub" href="#">提交</a>
+                    <p>4489</p>
+                    <input type="text" class="txt">
+                    <p>验证码</p>
+                </div>
+            </div>
+            
+            <!--投资记录-->
+            <div class="tzjl">
+                <h4>投资记录</h4>
+                <ul class="tit">
+                	<li>投资人</li>
+                    <li>投资利率</li>
+                    <li>投资金额</li>
+                    <li>投资时间</li>
+                    <li>投资方式</li>
+                    <li>状态</li>
+                </ul>
+                
+                <ul class="con">
+                	<li>***59</li>
+                    <li>16%/年</li>
+                    <li>5,000.00</li>
+                    <li>2014-12-11 10:44:11</li>
+                    <li>手动投标</li>
+                    <li>已中标</li>
+                </ul>
+                <ul class="con">
+                	<li>***59</li>
+                    <li>16%/年</li>
+                    <li>5,000.00</li>
+                    <li>2014-12-11 10:44:11</li>
+                    <li>手动投标</li>
+                    <li>已中标</li>
+                </ul>
+                <ul class="con">
+                	<li>***59</li>
+                    <li>16%/年</li>
+                    <li>5,000.00</li>
+                    <li>2014-12-11 10:44:11</li>
+                    <li>手动投标</li>
+                    <li>已中标</li>
+                </ul>
+                <ul class="con">
+                	<li>***59</li>
+                    <li>16%/年</li>
+                    <li>5,000.00</li>
+                    <li>2014-12-11 10:44:11</li>
+                    <li>手动投标</li>
+                    <li>已中标</li>
+                </ul>
+                
+                <ul class="tzjl_fy">
+                	<li><</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+	<!--content end-->
 
-								</div>
-							</div>
-							<div class="xqbottom">
-								<table width="100%" border="0" cellspacing="0" cellpadding="0">
-									<tr>
-
-										<td width="10%">
-											还差：
-											<span>￥ <s:property
-													value="#request.borrowDetailMap.investAmount" default="0" />
-											</span>
-										</td>
-										<td width="18%" colspan="2">
-											<div>
-												<div style="float: left;">
-													投标进度：
-												</div>
-												<div
-													style="float: left; vertical-align: bottom; margin-right: 5px; margin-top: 8px; padding: 3px; background-image: url(__STATIC__/rzg_images/index9_57.jpg); width: 100px; height: 10px;">
-													<img src="__STATIC__/rzg_images/index9_56.jpg"
-														width="<s:property value="#request.borrowDetailMap.schedules" default="0"/>"
-														height="10" style="display: block;" />
-												</div>
-												<div style="float: left;">
-													<span><s:property
-															value="#request.borrowDetailMap.schedules" default="0" />%</span>
-												</div>
-											</div>
-											<s:if test="#request.subscribes!=1">&nbsp;</s:if>
-											<s:else>
-    		&nbsp;&nbsp;剩余份数:<s:property
-													value="#request.borrowDetailMap.circulationNumber - #request.borrowDetailMap.hasCirculationNumber"
-													default="0" />
-											</s:else>
-										</td>
-									</tr>
-									<tr>
-										<!-- modify by houli   将还款方式字体加粗变红 -->
-
-										<td>
-											<strong style="color: red"> 还款方式： modify by houli 如果是天标，则还款方式为  到期还本付息
-												<s:if test="%{#request.borrowDetailMap.isDayThe ==2}">
-    	 到期还本付息
-    	</s:if> <s:elseif test="%{#request.borrowDetailMap.paymentMode == 1}">按月分期还款</s:elseif>
-												<s:elseif
-													test="%{#request.borrowDetailMap.paymentMode == 2}">按月付息,到期还本</s:elseif>
-												<s:elseif
-													test="%{#request.borrowDetailMap.paymentMode == 3}">秒还</s:elseif>
-												<s:elseif
-													test="%{#request.borrowDetailMap.paymentMode == 4}">一次性还款</s:elseif>
-
-
-											</strong>
-										</td>
-										<td>
-											投标奖励：
-											<s:if test="%{#request.borrowDetailMap.excitationType == 1}">无</s:if>
-											<s:elseif
-												test="%{#request.borrowDetailMap.excitationType ==2}">按固定金额</s:elseif>
-											<s:elseif
-												test="%{#request.borrowDetailMap.excitationType ==3}">按借款金额比例</s:elseif>
-										</td>
-										<td>
-											交易类型：
-											<s:if test="%{#request.borrowDetailMap.tradeType == 1}">线上交易</s:if>
-											<s:elseif test="%{##request.borrowDetailMap.tradeType ==2}">线下交易</s:elseif>
-										</td>
-									</tr>
-									<tr>
-										<s:if test="#request.subscribes!=1">
-											<td>
-												最小投标金额： ￥
-												<s:property value="#request.borrowDetailMap.minTenderedSum"
-													default="0" />
-												元
-											</td>
-											<td>
-												最大投标金额：
-												<s:if test="%{#request.borrowDetailMap.maxTenderedSum==-1}">
-							没有限制
-				     </s:if>
-												<s:else>
-					    ￥<s:property value="#request.borrowDetailMap.maxTenderedSum"
-														default="0" />元                
-					</s:else>
-											</td>
-										</s:if>
-										<s:else>
-											<td>
-												最小认购金额： ￥
-												<s:property
-													value="#request.borrowDetailMap.smallestFlowUnit"
-													default="0" />
-												元
-											</td>
-											<td width="9%">
-												认购总份数：
-												<s:property
-													value="#request.borrowDetailMap.circulationNumber"
-													default="0" />
-												份
-											</td>
-										</s:else>
-										<td width="7%">
-											剩余时间：
-											<span id="remainTimeOne"></span>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="3">
-											总投标数：
-											<s:property value="#request.borrowDetailMap.investNum"
-												default="0" />
-											浏览量：
-											<s:property value="#request.borrowDetailMap.visitors"
-												default="---" />
-											<br />
-											<span style="color: red">${earnAmount}</span>
-										</td>
-									</tr>
-								</table>
-
-							</div>
-						</div>
-
-					</div>
-					<div class="reninfo">
-
-						<div class="rinfomain">
-							<div class="tx">
-								<shove:img src="${borrowUserMap.personalHead}"
-									defaulImg="__STATIC__/rzg_images/default-img.jpg" width="62" height="62"></shove:img>
-							</div>
-							<div class="jfico">
-								<!-- <img src="images/ico_r_${borrowUserMap.rating}.gif" /> -->
-								&nbsp;
-							</div>
-							<div class="name">
-								<table width="100%" border="0" cellspacing="0" cellpadding="0">
-									<tr>
-										<td>
-											用户名：${borrowUserMap.username}
-											<s:if test="#request.borrowUserMap.vipStatus ==2"></s:if>
-										</td>
-									</tr>
-									<tr>
-										<td>
-											居住地： ${borrowUserMap.address}
-										</td>
-									</tr>
-									
-<!-- 									<tr>
-										<td>
-											信用指数：
-											<img src="images/ico_${borrowUserMap.credit}.jpg"
-												title="${borrowUserMap.creditrating}分" width="33"
-												height="22" />
-										</td>
-									</tr>
-									 -->
-									<tr>
-										<td>
-											注册时间：${borrowUserMap.createTime}
-										</td>
-									</tr>
-									<tr>
-										<td>
-											最后登录：${borrowUserMap.lastDate}
-										</td>
-									</tr>
-									<tr>
-										<td align="center">
-											<img src="__STATIC__/rzg_images/neiye2_22.jpg" width="16" height="16" />
-											<a id="focusonUser" href="javascript:void(0);">关注此人</a>
-										</td>
-									</tr>
-								</table>
-							</div>
-						</div>
-
-					</div>
-				</div>
-			</div>
-			<div class="ifbox2">
-				<div class="til"
-					style="background-image: url(__STATIC__/rzg_images/neiye2_32.jpg); background-repeat: repeat-x;">
-					<ul>
-						<li class="on">
-							相关信息
-						</li>
-					</ul>
-					<div class="til_bot">
-					</div>
-				</div>
-				<div class="boxmain">
-<!-- 					<p class="xydj">
-						融资谷网贷信用等级：
-						<img src="images/ico_${borrowUserMap.credit}.jpg"
-							title="${borrowUserMap.creditrating}分" width="33" height="22" />
-						<span>融资谷网贷信用额度： ${borrowUserMap.creditLimit}</span>
-					</p> -->
-					<div class="tips">
-						以下基本信息资料，经用户同意披露。其中
-						<span class="fred">红色</span>字体的信息，为通过融资谷网贷审核的项目。
-						<br />
-						<strong>审核意见：</strong>${borrowDetailMap.auditOpinion}
-					</div>
-					<div class="infotab">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<th colspan="6" align="left">
-									基本信息
-								</th>
-							</tr>
-							<tr>
-								<td>
-									性别：
-									<s:if test="#request.borrowUserMap.auditperson == 3">
-										<strong>${borrowUserMap.sex}</strong>
-									</s:if>
-									<s:else>${borrowUserMap.sex}</s:else>
-								</td>
-								<td>
-									年龄：
-									<s:if test="#request.borrowUserMap.auditperson == 3">
-										<strong>${borrowUserMap.age}</strong>
-									</s:if>
-									<s:else>${borrowUserMap.age}</s:else>
-								</td>
-								<td colspan="3">
-									婚姻状况：
-									<s:if test="#request.borrowUserMap.auditperson == 3">
-										<strong>${borrowUserMap.maritalStatus}</strong>
-									</s:if>
-									<s:else>${borrowUserMap.maritalStatus}</s:else>
-								</td>
-								<td colspan="3">
-									工作城市：
-									<s:if test="#request.borrowUserMap.auditwork == 3">
-										<strong>${borrowUserMap.workPro}&nbsp;${borrowUserMap.workCity}</strong>
-									</s:if>
-									<s:else>${borrowUserMap.workPro}&nbsp;${borrowUserMap.workCity}</s:else>
-								</td>
-							</tr>
-
-							<tr>
-								<td>
-									学历：
-									<s:if test="#request.borrowUserMap.auditwork == 3">
-										<strong>${borrowUserMap.highestEdu}</strong>
-									</s:if>
-									<s:else>${borrowUserMap.highestEdu}</s:else>
-								</td>
-								<td>
-									有无购房：
-									<s:if test="#request.borrowUserMap.auditperson == 3">
-										<strong>${borrowUserMap.hasHourse}</strong>
-									</s:if>
-									<s:else>${borrowUserMap.hasHourse}</s:else>
-								</td>
-								<td>
-									有无购车：
-									<s:if test="#request.borrowUserMap.auditperson == 3">
-										<strong>${borrowUserMap.hasCar}</strong>
-									</s:if>
-									<s:else>${borrowUserMap.hasCar}</s:else>
-								</td>
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									&nbsp;
-								</td>
-								<td>
-									&nbsp;
-								</td>
-							</tr>
-						</table>
-					</div>
-					<div class="infotab">
-						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-							<tr>
-								<th colspan="5" align="left">
-									融资谷网贷借款记录
-								</th>
-							</tr>
-							<tr>
-								<td>
-									发布借款标的：
-									<s:if test="#request.borrowRecordMap.publishBorrow !=''">${borrowRecordMap.publishBorrow}</s:if>
-									<s:else>0</s:else>
-								</td>
-								<td>
-									成功借款笔数：
-									<s:if test="#request.borrowRecordMap.successBorrow !=''">${borrowRecordMap.successBorrow}</s:if>
-									<s:else>0</s:else>
-								</td>
-								<td>
-									还清笔数：
-									<s:if test="#request.borrowRecordMap.repayBorrow !=''">${borrowRecordMap.repayBorrow}</s:if>
-									<s:else>0</s:else>
-								</td>
-								<td>
-									逾期次数：
-									<s:if test="#request.borrowRecordMap.hasFICount !=''">${borrowRecordMap.hasFICount}</s:if>
-									<s:else>0</s:else>
-								</td>
-								<td>
-									严重逾期次数：
-									<s:if test="#request.borrowRecordMap.badFICount !=''">${borrowRecordMap.badFICount}</s:if>
-									<s:else>0</s:else>
-								</td>
-							</tr>
-							<tr>
-								<td>
-									共借入：
-									<s:if test="#request.borrowRecordMap.borrowAmount !=''">${borrowRecordMap.borrowAmount}</s:if>
-									<s:else>0</s:else>
-								</td>
-								<td>
-									待还金额：
-									<s:if test="#request.borrowRecordMap.forRepayPI !=''">${borrowRecordMap.forRepayPI}</s:if>
-									<s:else>0</s:else>
-								</td>
-								<td>
-									逾期金额：
-									<s:if test="#request.borrowRecordMap.hasI !=''">${borrowRecordMap.hasI}</s:if>
-									<s:else>0</s:else>
-								</td>
-								<td>
-									共借出：
-									<s:if test="#request.borrowRecordMap.investAmount !=''">${borrowRecordMap.investAmount}</s:if>
-									<s:else>0</s:else>
-								</td>
-								<td>
-									待收金额：
-									<s:if test="#request.borrowRecordMap.forPI !=''">${borrowRecordMap.forPI}</s:if>
-									<s:else>0</s:else>
-								</td>
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-			<div class="ifbox2">
-				<div class="til"
-					style="background-image: url(__STATIC__/rzg_images/neiye2_32242.jpg); background-repeat: repeat-x; border: none;">
-					<ul class="shtab">
-						<li class="on" id="audit">
-							审核记录
-						</li>
-						<li id="repay">
-							还款详情
-						</li>
-						<li id="info">
-							<%--<a href="javascript:;" id="info"></a>--%>
-							信息披露
-						</li>
-						<s:if test="#request.colSize != null">
-							<li id="collection">
-								催收记录
-							</li>
-						</s:if>
-					</ul>
-					<div class="til_bot">
-					</div>
-				</div>
-				<div class="boxmain">
-					<div class="box">
-	<!-- 					<div class="tips">
-							融资谷网贷将以客观、公正的原则，最大程度地核实借入者信息的真实性，但不保证审核信息100%真实。如果借入者长期逾期，其提供的信息将被公布。
-						</div> -->
-						<div id="contentList" class="tytab">
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-								<tr>
-									<th align="center">
-										审核项目
-									</th>
-									<th align="center">
-										状态
-									</th>
-									<th align="center">
-										通过时间
-									</th>
-									<%--<th align="center">
-										操作
-									</th>--%>
-								</tr>
-								<s:if test="%{#request.list !=null && #request.list.size()>0}">
-									<s:iterator value="#request.list" id="bean">
-										<tr>
-											<td align="center">
-												${bean.name}
-											</td>
-											<td align="center">
-												<s:if test="#bean.auditStatus == 1">
-                                      审核中
-          </s:if>
-												<s:elseif test="#bean.auditStatus == 2">
-                                       审核失败
-          </s:elseif>
-												<s:elseif test="#bean.auditStatus == 3">
-													<img src="__STATIC__/rzg_images/neiye2_44.jpg" width="14" height="15" />
-												</s:elseif>
-												<s:else>
-                                     等待资料上传
-          </s:else>
-											</td>
-											<td align="center">
-												${bean.passTime}
-											</td>
-											<%--
-											<td align="center" class="ck">
-												<s:if test="#bean.visiable== 1 && #bean.auditStatus==3">
-													<a
-														href="javascript:showImg('${bean.materAuthTypeId}','${bean.userId}','${user.id }');">查看</a>
-												</s:if>
-												<s:else>---
-          </s:else>
-											</td>--%>
-										</tr>
-									</s:iterator>
-								</s:if>
-								<s:else>
-									<td colspan="4" align="center">
-										没有数据
-									</td>
-								</s:else>
-							</table>
-						</div>
-					</div>
-				</div>
-				<div class="ifbox2">
-					<div class="til"
-						style="background-image: url(__STATIC__/rzg_images/neiye2_32.jpg); background-repeat: repeat-x;">
-						<ul>
-							<li class="on">
-								标的详情
-							</li>
-						</ul>
-						<div class="til_bot">
-						</div>
-					</div>
-					<div class="boxmain">
-						<p class="txt">
-
-							<s:property value="#request.borrowDetailMap.borrowInfo"
-								default="" />
-						</p>
-					</div>
-				</div>
-				 <!-- 加载留言的页面  start -->
-				<div id="msg" class="ifbox2">
-					<img src="__STATIC__/rzg_images/load.gif" class="load" alt="加载中..." />
-				</div>
-				 <!-- 加载留言的页面 end -->
-				<div class="ifbox2">
-					<div class="til">
-						<ul>
-							<li class="on">
-								投资记录
-							</li>
-						</ul>
-						<div class="til_bot">
-						</div>
-					</div>
-					<div class="boxmain">
-						<div class="tzjl">
-							<ul>
-								<li>
-									目前总投标金额：
-									<strong>￥${borrowDetailMap.hasInvestAmount}</strong>
-								</li>
-								<li>
-									剩余投标金额：
-									<strong>￥${borrowDetailMap.investAmount}</strong>
-								</li>
-								<li>
-									剩余投标时间：
-									<strong><span id="remainTimeTwo"></span> </strong>
-								</li>
-							</ul>
-						</div>
-						<div class="tytab">
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-								<tr>
-									<th align="center">
-										投资人
-									</th>
-									<th align="center">
-										投资金额
-									</th>
-									<th align="center">
-										投资时间
-									</th>
-								</tr>
-								<s:if
-									test="%{#request.investList !=null && #request.investList.size()>0}">
-									<s:iterator value="#request.investList" id="investList">
-										<tr>
-											<td align="center" class="name">
-												<s:property value="#investList.username" default="---" />
-												<%--   creditedStatus==2 代表该用户在转让债权 --%>
-												<s:if
-													test="#investList.creditedStatus !=null && #investList.creditedStatus==2 ">
-													<img src="images/zrico.jpg" width="30" height="16" />
-												</s:if>
-											</td>
-											<td align="center" class="fred">
-												￥
-												<s:property value="#investList.investAmount" />
-											</td>
-											<td align="center">
-												<s:property value="#investList.investTime" />
-											</td>
-										</tr>
-									</s:iterator>
-								</s:if>
-								<s:else>
-									<td colspan="3" align="center">
-										没有数据
-									</td>
-								</s:else>
-							</table>
-						</div>
-					</div>
-				</div>
-			</div>
-			</volist>
-		</div>
-		<div id="remainSeconds" style="display: none;">
-			${borrowDetailMap.remainTime}
-		</div>
-		<input type="hidden" id="bid" value="${borrowDetailMap.id}" />
-		<input id="ckImg" type="hidden"
-			value="<%=session.getAttribute("user")%>" />
 		<!-- 引用底部公共部分 -->
 		<jsp:include page="/include/footer.jsp"></jsp:include>
 

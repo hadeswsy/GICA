@@ -1,0 +1,10 @@
+<div id="wsearch" class="show">
+搜索与 <em>{$info.title}</em> 相关的站外资源：<a class="btn btn-primary" href="http://www.baidu.com/#wd={$info.title}" target='_blank'>百度</a> <a class="btn btn-warning" href="https://www.google.com.hk/#newwindow=1&safe=strict&q={$info.title}" target='_blank'>谷歌</a>
+{$sList[1]}
+</div>
+<script type="text/javascript">
+	if ({$Wsearch_config['display']}==0) {
+		var obj=document.getElementById('wsearch');
+		obj.className='hidden';
+	};
+</script>

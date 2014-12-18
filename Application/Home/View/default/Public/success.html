@@ -1,0 +1,42 @@
+<block name="body">
+<extend name="Base/common"/>
+<block name="body">
+        <div class="nymain">
+            <div class="ifbox1">
+                <h2>
+                    系统提示：
+                    <img src="__STATIC__/rzg_images/neiye2_06.jpg" width="4" height="7" />
+                </h2>
+                <div class="boxmain" style="padding-top: 100px; padding-bottom: 300px;padding-left:300px;">
+
+                <h1><?php echo($message); ?></h1>
+<p class="detail"></p>
+<p class="jump">
+<b id="wait"><?php echo($waitSecond); ?></b> 秒后页面将自动跳转
+</p>
+<div>
+    <a id="href" id="btn-now" href="<?php echo($jumpUrl); ?>">立即跳转</a> 
+    <button id="btn-stop" type="button" onclick="stop()">停止跳转</button> 
+</div>
+                </div>
+                </div>
+                </div>
+
+<script type="text/javascript">
+// layer.msg('<?php echo($message); ?>', 2, 0);
+(function(){ 
+ var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+ var interval = setInterval(function(){
+     	var time = --wait.innerHTML;
+     	if(time <= 0) {
+     		location.href = href;
+     		clearInterval(interval);
+     	};
+     }, 1000);
+  window.stop = function (){
+         console.log(111);
+            clearInterval(interval);
+ }
+ })();
+</script>
+</block>

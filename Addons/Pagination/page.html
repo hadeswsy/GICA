@@ -1,0 +1,11 @@
+<?php if ($vpageid===1): ?>
+	<script type="text/javascript" src="__ADDONROOT__/Static/vPagination.js"></script>
+	<link rel="stylesheet" href="__ADDONROOT__/Static/vPagination.css">	
+<?php endif ?>
+  <div id="vace-pagination{$vpageid}" class="pagination"></div>
+<script type="text/javascript">
+	$('#vace-pagination{$vpageid}').pagination({items:{$vcount},itemsOnPage:{$pageconfig['limit']},	currentPage:{$currentPage},hrefTextPrefix:'{$baseUrl}/p/', 
+		hrefTextSuffix:'.html', prevText:"{$pageconfig['page_prev']}",
+		nextText:"{$pageconfig['page_next']}",cssStyle: "{$pageconfig['page_skin']}-theme",
+	});
+</script>

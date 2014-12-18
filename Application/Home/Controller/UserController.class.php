@@ -14,7 +14,7 @@ class UserController extends HomeController {
 	}
 
 	/* 注册页面 */
-	public function register($username = '', $password = '', $repassword = '', $email = '', $verify = ''){
+	public function register($username = '', $password = '', $repassword = '', $email = '', $verify = '',$mobile=''){
         if(!C('USER_ALLOW_REGISTER')){
             $this->error('注册已关闭');
         }
@@ -31,9 +31,15 @@ class UserController extends HomeController {
 
 			/* 调用注册接口注册用户 */
             $User = new UserApi;
-			$uid = $User->register($username, $password, $email);
+			$uid = $User->register($username, $password, $email,$mobile);
 			if(0 < $uid){ //注册成功
 				//TODO: 发送验证邮件
+
+				$m=M("z_member_money");//关联会员资金表
+           		$m->uid=$uid;
+           		$count=$m->add();
+
+
 				$this->success('注册成功！',U('login'));
 			} else { //注册失败，显示错误信息
 				$this->error($this->showRegError($uid));
@@ -47,6 +53,7 @@ class UserController extends HomeController {
 	/* 登录页面 */
 	public function login($username = '', $password = '', $verify = ''){
 		if(IS_POST){ //登录验证
+			
 			/* 检测验证码 */
 			if(!check_verify($verify)){
 				$this->error('验证码输入错误！');
@@ -55,6 +62,8 @@ class UserController extends HomeController {
 			/* 调用UC登录接口登录 */
 			$user = new UserApi;
 			$uid = $user->login($username, $password);
+			//$uidPhone=$user->loginPhone($username, $password);||$uidPhone>0; ||$Member->loginPhone($uidPhone)
+			
 			if(0 < $uid){ //UC登录成功
 				/* 登录用户 */
 				$Member = D('Member');

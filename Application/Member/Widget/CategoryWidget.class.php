@@ -15,14 +15,20 @@ class CategoryWidget extends Controller{
 	public function lists($cate, $child = false){
 		$field = 'id,name,pid,title,link_id';
 		if($child){
+			
+			
 			$category = D('Category')->getTree($cate, $field);
 			$category = $category['_'];
 		} else {
 			$category = D('Category')->getSameLevel($cate, $field);
 		}
+		
+		
 		$this->assign('category', $category);
 		$this->assign('current', $cate);
 		$this->display('Category/lists');
 	}
 	
 }
+
+

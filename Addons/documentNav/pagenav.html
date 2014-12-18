@@ -1,0 +1,29 @@
+<style>#chepagenav{ {$addons_config.style} }</style>
+<script type="text/javascript">
+var chepagenav = '<div id="chepagenav"></div>';
+$("body").append(chepagenav);
+</script>
+
+<!-- 获取到页面的h1元素，并且提取出来放到#chepagenav里 -->
+<script type="text/javascript">
+var length = document.getElementsByTagName("{$addons_config.element}").length;
+var div='<div><ul>';
+for(i=0;i<length;i++){
+	temp ='<li>'+document.getElementsByTagName("{$addons_config.element}")[i].innerHTML+'</li>';
+	div += '<li><a href="#nav'+i+'" id="mya">'+document.getElementsByTagName("{$addons_config.element}")[i].innerHTML+'</a></li>';
+	document.getElementsByTagName("{$addons_config.element}")[i].innerHTML = '<a name=nav'+i+'>'+temp+'</a>';
+}
+div += '</ul></div>';
+$("#chepagenav").append(div);
+
+//让DIV随鼠标滚动，并且屏蔽掉可能的a标签的下划线和前面小圆点
+$(document).ready(function(){  
+    var menuYloc = $("#chepagenav").offset().top; 
+    $(window).scroll(function (){  
+        var offsetTop = menuYloc + $(window).scrollTop() +"px";  
+        $("#chepagenav").animate({top : offsetTop },{ duration:10 , queue:false });  
+    });  
+    $("#chepagenav a").removeAttr("target");
+    $("a,li").css("list-style","none").css("text-decoration","none");
+}); 
+</script>

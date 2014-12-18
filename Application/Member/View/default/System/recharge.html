@@ -1,17 +1,13 @@
 <block name="body">
 <extend name="Base/common"/>
 <block name="body">
-		<!-- 引用头部公共部分 -->
-		<jsp:include page="/include/topref.jsp"></jsp:include>
-		<div class="nymain">
-			<div class="wdzh">
-				<div class="l_nav">
-					<div class="box">
-						<!-- 引用我的帐号主页左边栏 -->
-						<include file="Public/left"/>
-					</div>
-				</div>
-				<div class="r_main">
+		<!--content start-->
+	<div class="zh_cont_out">
+    	<div class="zh_cont">
+            <h2><a href="{:U('Index')}">我的账户</a></h2>	
+            	<include file="Public/left"/>
+            <div class="zh_cont_r">
+            	<div class="r_main"><form action="{:U('recharge_save')}" method="post">
 					<div class="tabtil">
 						<ul>
 							<li class=" tipshang">
@@ -58,9 +54,8 @@
 											充值金额：
 										</td>
 										<td>
-											<input id="money" type="text" class="inp140" />
-											<span style="color: red; float: none;" id="money_tip"
-												class="formtips"></span>
+											<input id="money" type="text" class="inp140"  name="account_money" />
+											<span style="color: red; float: none;" id="money_tip"class="formtips"></span>
 										</td>
 									</tr>
 									<tr>
@@ -71,12 +66,12 @@
 											<s:if test="#request.gopay==2">
 												<input id="gopay" type="radio" name="pay" value="2"
 													style="float: none;" />&nbsp;
-   <img src="images/gopay.png" width="121px" height="33px" />&nbsp;&nbsp;&nbsp;&nbsp; 
+   <img src="__STATIC__/rzg_images/gopay.png" width="121px" height="33px" />&nbsp;&nbsp;&nbsp;&nbsp; 
    </s:if>
 											<s:if test="#request.IPS==2">
 												<input id="ipay" type="radio" name="pay" value="1"
 													style="float: none;" />&nbsp;&nbsp;
-   <img src="images/ipay.png" width="121px" height="33px" />
+   <img src="__STATIC__/rzg_images/ipay.png" width="121px" height="33px" />
 											</s:if>
 <!-- 											<input type="radio" name="pay" id="xxpay" value="3"
 												style="float: none;" />
@@ -97,104 +92,104 @@
 														<td>
 															<input type="radio" name="bankType" value="ICBC"
 																id="rd_gopay_icbc" />
-															<img src="images/banks/bank_01.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_01.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="CMB" />
-															<img src="images/banks/bank_02.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_02.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="CCB" />
-															<img src="images/banks/bank_03.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_03.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="ABC" />
-															<img src="images/banks/bank_04.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_04.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="BOC" />
-															<img src="images/banks/bank_05.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_05.png" width="128"
 																height="33" />
 														</td>
 													</tr>
 													<tr>
 														<td>
 															<input type="radio" name="bankType" value="SPDB" />
-															<img src="images/banks/bank_06.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_06.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="SDB" />
-															<img src="images/banks/bank_07.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_07.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="CIB" />
-															<img src="images/banks/bank_08.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_08.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="BOBJ" />
-															<img src="images/banks/bank_09.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_09.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="CEB" />
-															<img src="images/banks/bank_10.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_10.png" width="128"
 																height="33" />
 														</td>
 													</tr>
 													<tr>
 														<td>
 															<input type="radio" name="bankType" value="BOCOM" />
-															<img src="images/banks/bank_11.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_11.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="CMBC" />
-															<img src="images/banks/bank_12.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_12.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="CITIC" />
-															<img src="images/banks/bank_13.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_13.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="GDB" />
-															<img src="images/banks/bank_14.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_14.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="PAB" />
-															<img src="images/banks/bank_15.png" width="128"
+															<img src="__STATIC__/rzg_mages/banks/bank_15.png" width="128"
 																height="33" />
 														</td>
 													</tr>
 													<tr>
 														<td>
 															<input type="radio" name="bankType" value="PSBC" />
-															<img src="images/banks/bank_16.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_16.png" width="128"
 																height="33" />
 														</td>
 
 														<td>
 															<input type="radio" name="bankType" value="SRCB" />
-															<img src="images/banks/bank_18.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_18.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="BOS" />
-															<img src="images/banks/bank_19.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_19.png" width="128"
 																height="33" />
 														</td>
 														<td>
 															<input type="radio" name="bankType" value="HXBC" />
-															<img src="images/banks/bank_20.png" width="128"
+															<img src="__STATIC__/rzg_images/banks/bank_20.png" width="128"
 																height="33" />
 														</td>
 														
@@ -380,9 +375,9 @@
 								</table>
 
 							</div>
-							<div class="btn" id="btn_submit">
-								<input type="button" class="bcbtn shigong" value="保存并继续"
-									id="addrecharge" />
+							<div  id="btn_submit">
+							<input type="submit" class="btn" value="提交充值"id="addrecharge"/> 
+								<!-- <input type="button" class="bcbtn" value="保存并继续"id="addrecharge" /> -->
         <!-- <a href="javascript:void(0);" class="bcbtn" onclick="addRechargeInfo();">保存并继续</a> -->
 							</div>
 							<p id="p_about" class="tips2" style="border: none;">
@@ -395,11 +390,12 @@
 						</div>
 					</div>
 
-				</div>
-			</div>
-		</div>
-		<!-- 引用底部公共部分 -->
-		<jsp:include page="/include/footer.jsp"></jsp:include>
+				</div></from>
+            </div>
+            </div>
+        </div>
+    </div>
+	<!--content end-->		
 		<script type="text/javascript" src="/script/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="script/jquery.shove-1.0.js"></script>
 		<script type="text/javascript" src="script/nav-zh.js"></script>
@@ -503,57 +499,57 @@
 	$("#addrecharge").click(function() {
 		addRechargeInfo();
 	});
-	function addRechargeInfo() {
-		if ($("#money").val() == "") {
-			$("#money_tip").html("请输入充值金额");
-			return;
-		} else if (!/^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/
-				.test($("#money").val())) {
-			$("#money_tip").html("请输入正确的提现金额，必须为大于0的数字");
-			return;
-		} else if ($("#money").val() < 0.01) {
-			$("#money_tip").html("最小金额不能低于0.01");
-			return;
-		} else {
-			$("#money_tip").html("");
-		}
+	// function addRechargeInfo() {
+	// 	if ($("#money").val() == "") {
+	// 		$("#money_tip").html("请输入充值金额");
+	// 		return;
+	// 	} else if (!/^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$/
+	// 			.test($("#money").val())) {
+	// 		$("#money_tip").html("请输入正确的提现金额，必须为大于0的数字");
+	// 		return;
+	// 	} else if ($("#money").val() < 0.01) {
+	// 		$("#money_tip").html("最小金额不能低于0.01");
+	// 		return;
+	// 	} else {
+	// 		$("#money_tip").html("");
+	// 	}
 
-		var payType = -1;
-		if ($("#gopay").attr("checked") == "checked") {
-			payType = 1;
-		} else if ($("#ipay").attr("checked") == "checked") {
-			payType = 2;
-		} else {
-			alert("请选择充值类型");
-			return;
-		}
-		var bankType = "";
+	// 	var payType = -1;
+	// 	if ($("#gopay").attr("checked") == "checked") {
+	// 		payType = 1;
+	// 	} else if ($("#ipay").attr("checked") == "checked") {
+	// 		payType = 2;
+	// 	} else {
+	// 		alert("请选择充值类型");
+	// 		return;
+	// 	}
+	// 	var bankType = "";
 
-		bankType = $("input[name='bankType']:checked").val();
+	// 	bankType = $("input[name='bankType']:checked").val();
 
-		if (bankType == "" || bankType == undefined) {
-			alert("请选择银行类型");
-			return;
-		}
+	// 	if (bankType == "" || bankType == undefined) {
+	// 		alert("请选择银行类型");
+	// 		return;
+	// 	}
 
-		if (!window.confirm("确定进行帐户充值")) {
-			return;
-		} else {
-			$("#addrecharge").attr("disabled", true);
-		}
-		var money = $("#money").val();
-		var type = "";
-		if ($("#ipay").attr("checked") == "checked") {
-			window.open("ipayPayment.htm?divType=li_2&money=" + money
-					+ "&gatewayType=" + bankType);
-		} else if ($("#gopay").attr("checked") == "checked") {
-			window.open("gopayPayment.htm?divType=li_2&money=" + money
-					+ "&bankCode=" + bankType);
-		} else {
-			alert("请选择充值类型");
-		}
-		$("#addrecharge").attr("disabled", false);
-	}
+	// 	if (!window.confirm("确定进行帐户充值")) {
+	// 		return;
+	// 	} else {
+	// 		$("#addrecharge").attr("disabled", true);
+	// 	}
+	// 	var money = $("#money").val();
+	// 	var type = "";
+	// 	if ($("#ipay").attr("checked") == "checked") {
+	// 		window.open("ipayPayment.htm?divType=li_2&money=" + money
+	// 				+ "&gatewayType=" + bankType);
+	// 	} else if ($("#gopay").attr("checked") == "checked") {
+	// 		window.open("gopayPayment.htm?divType=li_2&money=" + money
+	// 				+ "&bankCode=" + bankType);
+	// 	} else {
+	// 		alert("请选择充值类型");
+	// 	}
+	// 	$("#addrecharge").attr("disabled", false);
+	// }
 
 	function jumpUrl(obj) {
 		window.location.href = obj;

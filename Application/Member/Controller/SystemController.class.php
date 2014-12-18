@@ -19,9 +19,34 @@ class SystemController extends MemberController {
         
     $this->display();
     }
+    public function usermailindex(){
+        $this->display();
+
+    }
+        public function recharge_save(){
+        $uid=is_login(); 
+        $condition['uid'] =$uid;
+        $money=M("z_member_money");
+        $money=$money->field('account_money')->where($condition)->select();//余额查询
+        
+        $m1=M("z_member_money");
+        $money=intval ($money[0]['account_money'])+intval ($_POST['account_money']);//余额加充值金额
+        $data1['account_money']=$money;
+       
+        $m=M("z_member_payonline");
+        $data['uid']=$uid;
+        $data['money']=$_POST['account_money'];
+        //保存当前数据对象
+        if ($m = $m->where($condition)->add($data)&&$m1 = $m1->where($condition)->save($data1)) { //保存成功
+            //成功提示
+            $this->success(L('充值成功。->>>>这不是真实金额'));
+        } else {
+            //失败提示
+            $this->error(L('充值失败'));
+        }
+    }
         public function userbankInfo(){
     	
-        
     $this->display();
     }
     public function userbankset(){

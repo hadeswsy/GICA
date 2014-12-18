@@ -1,17 +1,13 @@
 <block name="body">
 <extend name="Base/common"/>
 <block name="body">
-		<!-- 引用头部公共部分 -->
-		<jsp:include page="/include/topref.jsp"></jsp:include>
-		<div class="nymain">
-			<div class="wdzh">
-				<div class="l_nav">
-					<div class="box">
-						<!-- 引用我的帐号主页左边栏 -->
-						<include file="Public/left"/>
-					</div>
-				</div>
-				<div class="r_main">
+		<!--content start-->
+	<div class="zh_cont_out">
+    	<div class="zh_cont">
+            <h2><a href="{:U('Index')}">我的账户</a></h2>	
+            	<include file="Public/left"/>
+            <div class="zh_cont_r">
+            	<div class="r_main">
 					<div class="tabtil">
 						<ul>
 							<li class=" tipshang">
@@ -171,7 +167,7 @@
 											&nbsp;
 										</td>
 										<td style="padding-top: 20px;">
-											<input id="btn_submit" class="bcbtn shigong" value="确认提交" />
+											<input id="btn_submit" class="btn" value="确认提交" />
     <!-- <a  href="javascript:void(0);" id="btn_submit" class="bcbtn" onclick="addWithdraw();" >确认提交</a> -->
 										</td>
 									</tr>
@@ -195,10 +191,12 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-		<!-- 引用底部公共部分 -->
-		<jsp:include page="/include/footer.jsp"></jsp:include>
+            </div>
+            </div>
+        </div>
+    </div>
+	<!--content end-->		
+
 		<script type="text/javascript" src="/script/jquery-1.7.1.min.js"></script>
 		<script type="text/javascript" src="script/jquery.shove-1.0.js"></script>
 		<script type="text/javascript" src="script/nav-zh.js"></script>

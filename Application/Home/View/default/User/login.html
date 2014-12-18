@@ -1,160 +1,80 @@
 <extend name="Base/common" />
-<block name="header">
-<header class="jumbotron subhead" id="overview">
-  <div class="container">
-    <h2>用户登录</h2>
-    <p><span><span class="pull-left"><span>还没有账号? <a href="{:U('User/register')}">立即注册</a></span> </span></p>
-  </div>
-</header>
-</block>
-<block name="body">
-		<div class="nymain">
-			<div class="bigbox">
-				<div class="til">
-					平台会员登录
+<block name="header"> <header class="jumbotron subhead"
+	id="overview">
+	<div class="container">
+		<h2>用户登录</h2>
+		<p>
+			<span><span class="pull-left"><span>还没有账号? <a
+						href="{:U('User/register')}">立即注册</a></span> </span>
+		</p>
+	</div>
+</header> </block>
+<block name="body"> <!--content start-->
+<div class="dl_cont_out">
+	<form class="login-form" action="__SELF__" method="post" id="form">
+		<div class="dl_cont">
+			<h2>登陆工合财富</h2>
+			<dl><div>
+			        <img src="__PUBLIC__/Home/images/loginname.png">
+					<input type="text" value="" name="username" class="txt txt1"id="username" placeholder="用户名/手机号/邮箱" ajaxurl="/member/checkUserNameUnique.html"errormsg="请填写1-16位用户名" datatype="*1-16" />
 				</div>
-				<div class="sqdk"
-					style="padding-top: 55px; padding-bottom: 80px; padding-left: 60px;">
-					<div class="logintab" style="height:320px;">
-						<form class="login-form" action="__SELF__" method="post">
-							<table width="100%" border="0" cellspacing="0" cellpadding="0">
-								<tr>
-									<th align="right">
-										会员：
-									</th>
-									<td>
-										<input type="text" id="inputEmail" class="span3" placeholder="请输入用户名"  ajaxurl="/member/checkUserNameUnique.html" errormsg="请填写1-16位用户名" nullmsg="请填写用户名" datatype="*1-16" value="" name="username">
-									</td>
-								</tr>
-								<tr>
-									<th></th>
-									<td>
-										<span style="color: red;" id="s_email" class="formtips"></span>
-									</td>
-								</tr>
-								<tr>
-									<th align="right">
-										密码：
-									</th>
-									<td class="mima">
-										<input type="password" id="inputPassword"  class="span3" placeholder="请输入密码"  errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20" name="password">
-										<span id="retake_password"><a href="systemfindpass.htm">忘记密码</a>
-										</span>
-									</td>
-								</tr>
-								<tr>
-									<th></th>
-									<td>
-										<span style="color: red;" id="s_password" class="formtips"></span>
-									</td>
-								</tr>
-								<tr>
-									<th align="right">
-										验证码：
-									</th>
-									<td>
-										<input type="text" id="inputPassword" class="span3" placeholder="请输入验证码"  errormsg="请填写5位验证码" nullmsg="请填写验证码" datatype="*5-5" name="verify">
-										<img class="verifyimg reloadverify" alt="点击切换" src="{:U('verify')}" style="cursor:pointer;">
-									</td>
-								</tr>
-								<tr>
-									<th></th>
-									<td>
-										<span style="color: red;" id="s_code" class="formtips"></span>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										&nbsp;
-									</td>
-									<td class="zctd">
-										还没有加入工合财富？
-										<a href="{:U('Home/User/register')}">立即注册</a>
-									</td>
-								</tr>
-								<tr>
-									<td>
-										&nbsp;
-									</td>
-									<td>
-											<button type="submit">登 陆</button>
-									</td>
-								</tr>
-							</table>
-						</form>
-					</div>
-					<div class="zcdl_right">
-						<span id="s3_k_c_abq_d_prev" class="zzry_prev"></span>
-						<div id="s3_k_c_abq_d" class="zzry_pic">
-							<ul>
-								<li>
-									<a href="newhelp.htm"><img src="images/img/tzlc.jpg" />
-									</a>
-								</li>
-								<li>
-									<a href="borrowhelp.htm"><img src="images/img/jkrz.jpg" />
-									</a>
-								</li>
-								<li>
-									<a href="safety.htm"><img src="images/img/aqbz.jpg" />
-									</a>
-								</li>
-
-							</ul>
-						</div>
-						<span id="s3_k_c_abq_d_next" class="zzry_next"></span>
-					</div>
-					<div class="tip">
-        <ul>
-          <li> 帮助他人 快乐自己 收获利息 </li>
-          <li> 助您创业 资金周转 分期偿还 </li>
-          <li> 收益稳定可靠回报高 </li>
-          <li> 交易安全快捷有保障 </li>
-        </ul>
-      </div>
-     <div class="renpic"> </div>
+				<span style="color: red;" id="checkname" class="formtips"></span>
+			</dl>
+			<dl>
+				<div>
+			        <img src="__PUBLIC__/Home/images/password.png">
+					<input type="password" value="" name="password" class="txt txt1"id="password" placeholder="密 码"errormsg="密码为6-20位" nullmsg="请填写密码" datatype="*6-20"/>
 				</div>
+				<span style="color: red;" id="checkpwd" class="formtips"></span>
+			</dl>
+			<dl>
+				<div>
+			        <img src="__PUBLIC__/Home/images/yanzheng.png">
+					<input type="text" value="" name="verify" class="txt txt1" style="width: 140px;" id="verifycode" placeholder="验证码" errormsg="" nullmsg="请填写验证码" datatype="*6-20"/>
+					<a href="{:U('Home/User/login')}"><img src="{:U('verify')}" width="101" height="44" alt="点击切换" style="cursor: pointer;width:90px;float: right;" /></a>
+				</div>
+				<span style="color: red;" id="checkcode" class="formtips"></span>
+			</dl>
+			<input type="button" value="登录" name="denglu" id="loginIn"
+				onclick="javascript:;" class="btn" />
+			<div class="dl_cont_bot">
+				<span class="right"><a href="#">忘记密码？</a><a
+					href="#">|&nbsp;立即注册</a></span>
 			</div>
+			<div id="show"></div>
 		</div>
-		</block>
-<block name="side"> </block>
-<block name="script">
-	<script type="text/javascript">
+	</form>
+</div>
 
-    	$(document)
-	    	.ajaxStart(function(){
-	    		$("button:submit").addClass("log-in").attr("disabled", true);
-	    	})
-	    	.ajaxStop(function(){
-	    		$("button:submit").removeClass("log-in").attr("disabled", false);
-	    	});
-
-
-    	$("form").submit(function(){
-    		var self = $(this);
-    		$.post(self.attr("action"), self.serialize(), success, "json");
-    		return false;
-
-    		function success(data){
-    			if(data.status){
-    				window.location.href = data.url;
-    			} else {
-    				self.find(".Validform_checktip").text(data.info);
-    				//刷新验证码
-    				$(".reloadverify").click();
-    			}
-    		}
-    	});
-
-		$(function(){
-			var verifyimg = $(".verifyimg").attr("src");
-            $(".reloadverify").click(function(){
-                if( verifyimg.indexOf('?')>0){
-                    $(".verifyimg").attr("src", verifyimg+'&random='+Math.random());
-                }else{
-                    $(".verifyimg").attr("src", verifyimg.replace(/\?.*$/,'')+'?'+Math.random());
-                }
-            });
-		});
-	</script>
-</block>
+<script>
+	$("#loginIn").click(
+			function() {
+				var username = $("#username").val();
+				var password = $("#password").val();
+				var verifycode = $("#verifycode").val();
+				if (username == "") {
+					$("#checkname").html(
+							"<span><font color='red'>请输入用户名！</font></span>");
+					return false;
+				}
+				if (password == "") {
+					if (username != null) {
+						$("#checkname").hide();
+					}
+					$("#checkpwd").html("请输入登录命名！");
+					return false;
+				}
+				if (verifycode == "") {
+					if (username != null) {
+						$("#checkname").hide();
+					}
+					if (password != null) {
+						$("#checkpwd").hide();
+					}
+					$("#checkcode").html("请输入验证码！");
+					return false;
+				}
+				
+				$("#form").submit();
+			});
+</script> <!--content end--> </block>

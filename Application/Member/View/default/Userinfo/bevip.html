@@ -23,45 +23,45 @@
 						</ul>
 					</div>
       </div>
-      <div class="rmainbox10">
+      <div class="rmainbox10"><volist name="list" id="vo">
     <p class="tipd" style="color:#ff0000;">投资者：
-      <br />
+      <br>
       网站合作商提供投资担保，享受100%本金保障。对于担保标、推荐标，还能100%保利息。（普通用户仅保障本金）
 有专业客服跟踪服务，体验尊贵感受。
-享有尊贵VIP身份标识。<br />
-借款者：<br />享有借款资格，及时缓解资金压力。
+享有尊贵VIP身份标识。<br>
+借款者：<br>享有借款资格，及时缓解资金压力。
 参与网站举行的各种活动。</p>
-    <div class="tab">
+    <div class="tab"><form action="{:U('bevip_save')}" method="post">
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td align="right">您的状态是：</td>
-    <td>	<s:if test="#request.userMap.vipStatus==2">尊敬的vip会员</s:if>
-											<s:else>普通会员</s:else></td>
+    <td>	<if condition="$vo.user_type eq 1">
+               尊敬的vip会员
+          <elseif condition="$vo.user_type eq 0"/>
+               普通会员
+          </if>
+    </td>
   </tr>
   <tr>
     <td align="right">用　户　名：</td>
-    <td> ${userMap.username }</td>
+    <td>{:get_username()}</td>
   </tr>
-  <s:if test="#request.userMap.realName!=null">
-  <tr>
-    <td align="right">姓　　　名：</td>
-    <td>${userMap.realName }</td>
-  </tr>
-  </s:if>
   <tr>
     <td align="right">邮　　　箱：</td>
-    <td>	${userMap.email }</td>
+    <td>	{$vo.email}</td>
   </tr>
   <tr>
     <td align="right"><span style="color: red; float: none;" 
 														class="formtips">*</span>选择客服：</td>
-    <td>		<a id = "kefuname">${userMap.kefuname }</a>
-												<input type="hidden" value="${userMap.kfid }" name="paramMap.kefu" id="kefu"/>
-											    <input type="button" id="btn_sp" class="scbtn"
-									             style="cursor: pointer;" value="选择客服" onclick="fff()"/>
-												
-												<span style="color: red; float: none;" id="u_kefu"
-														class="formtips"></span></td>
+    <td>		
+            <select name="customer_id"  class="inp50">   
+              <option value="1">小晶</option>   
+              <option value="2">小月</option>   
+              <option value="3">小梦</option>   
+              <option value="4">小雨</option>    
+            </select>
+
+    </td>
   </tr>
 <!--  <tr>
     <td align="right">	<span style="color: red; float: none;" 
@@ -72,7 +72,7 @@
 														class="formtips"></span>
     </td>
   </tr> -->
-  <tr>
+  <!-- <tr>
     <td align="right">	<span style="color: red; float: none;" 
 														class="formtips">*</span>验 证 码：</td>
     <td>		<input type="text" class="inp100x" name="paramMap.code" id="code"/>
@@ -83,14 +83,15 @@
 												
 												<span style="color: red; float: none;" id="u_code"
 														class="formtips"></span></td>
-  </tr>
+  </tr> -->
   <tr>
     <td align="right">&nbsp;</td>
-    <td style="padding-top:20px;"> <input  type="button" id="vip_btn"  class="bcbtn" value="我要申请"/></td>
+    <td style="padding-top:20px;"> <input  type="submit" id="vip_btn"  class="bcbtn" value="申请VIP"/></td>
   </tr>
     </table>
 
     </div>
+    </volist>
     </div>
     </div>
 
